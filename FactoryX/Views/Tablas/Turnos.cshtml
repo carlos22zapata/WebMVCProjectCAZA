@@ -1,0 +1,250 @@
+﻿
+@{
+    ViewData["Title"] = "Turnos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Turnos del centro de operaciones</h1>
+
+<div class="scroller" id="tb_activos">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Turnos>().ID("dg_turnos")
+        .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("Tablas")
+            .LoadAction("GetTurnos")
+            .InsertAction("InsertTurnos")
+            .UpdateAction("UpdateTurnos")
+            .DeleteAction("DeleteTurnos")
+            .Key("Cod_turno")
+            .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                          )
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.Cod_turno).Caption("Código del turno").Width(250);
+
+            columns.AddFor(m => m.Hora_ini1).Caption("Hora de inicio")
+                    .Format(Format.ShortTime)  
+                    .EditorOptions(new {  
+                        displayFormat = "shortTime",  
+                        type = "time"  
+                    });
+
+            columns.AddFor(m => m.Hora_fin1).Caption("Hora final")
+                    .Format(Format.ShortTime)  
+                    .EditorOptions(new {  
+                        displayFormat = "shortTime",  
+                        type = "time"  
+                    });
+                        
+            columns.Add().Caption("Opciones")
+                    .Type(GridCommandColumnType.Buttons)
+                    .Width(110)
+                    .Buttons(b =>
+                            {
+
+                        b.Add().Name(GridColumnButtonName.Edit).Hint("Editar turno");
+                        b.Add().Name(GridColumnButtonName.Delete).Hint("Borrar turno");
+
+        });
+
+        })
+        //.MasterDetail(m => m
+        //    .Enabled(true)
+        //    .Template(new TemplateName("grid-detalle"))
+        //)
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    )
+
+</div>
+
+<br />
+<br />
+
+@* Modal para incluir los horarios *@
+<form class="modal fade" id="modalHorariosActivos" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title step-1 sin-padding" data-step="1" style="display: block;">Horarios del activo</h5>                
+            </div>
+
+            <div class="modal-body" style="display: block;">
+                <div class="row">
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <h6 class="modal-title " id="Lab_Cod_activo"></h6>
+                    &nbsp;&nbsp;
+                    <h6 class="modal-title " id="Lab_Des_activo"></h6>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="dx-field">
+                        <div>
+
+                            @* Nivel *@
+                            <div class="form-group">
+                                <label for="Dia" class="col-md-12 control-label" id="diaSemana">Día de la semana</label>
+                                <div class="col-md-12">
+                                    <select required id="Dia" onchange="selectValor()">
+                                        <option value="1">Lunes</option>
+                                        <option value="2">Martes</option>
+                                        <option value="3">Miercoles</option>
+                                        <option value="4">Jueves</option>
+                                        <option value="5">Viernes</option>
+                                        <option value="6">Sabado</option>
+                                        <option value="7">Domingo</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="dx-field-label"> &nbsp;&nbsp;&nbsp; Hora desde:</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Lu1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+                            <div class="dx-field-label"> &nbsp;&nbsp;&nbsp; Hora hasta:</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Lu1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+                        </div>
+
+                        @*<div class="modal-body step-2" data-step="1" style="display: none;">
+                            <div class="dx-field-label">Martes</div>
+                        </div>*@
+
+                        @*<div class="modal-body step-2" data-step="2" style="display: block;">
+
+
+
+                            </div>*@
+
+
+                        @*<div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Ma1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Ma1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-label">Miercoles</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Mi1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Mi1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-label">Jueves</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Ju1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Ju1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-label">Viernes</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Vi1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Vi1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-label">Sabado</div>
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Sa1d")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>
+
+                            <div class="dx-field-value">
+                                @(Html.DevExtreme().DateBox().ID("Sa1h")
+                                    .Type(DateBoxType.Time)
+                                    //.Value(DateTime.Now)
+                                )
+                            </div>*@
+                    </div>
+                </div>
+
+            </div>
+
+            @*<div class="row">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-outline-info step step-2" data-step="2" onclick="sendEvent('#modalHorariosActivos', 2)"><i class="fas fa-angle-left"></i> &nbsp; Día anterior</button>
+                &nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-outline-info step step-1" data-step="1" onclick="sendEvent('#modalHorariosActivos', 1)">Siguiente día &nbsp; <i class="fas fa-angle-right"></i></button>
+            </div>*@
+
+            <br />
+
+            <input type="text" id="Lab_id3" style="display:none;" />
+
+            <div class="modal-footer sin">
+                <button type="button" class="btn btn-outline-success" onclick="guardaHorasActivos()"><i class="fas fa-cubes"></i>Guardar</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Salir</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa      = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaHora         = '@Html.Raw(Url.Action("AsignaHora","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GuardaHorasActivos = '@Html.Raw(Url.Action("GuardaHorasActivos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+</script>
+
+<script src="~/js/TablasPrincipales.js"></script>
+<script src="~/js/multi-step-modal.js"></script>

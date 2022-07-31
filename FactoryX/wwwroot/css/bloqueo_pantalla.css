@@ -1,0 +1,22 @@
+﻿
+.blocker {
+    position: absolute;
+    /*top: 0px;*/
+    left: 0px;
+    height: 100%;
+    width: 100%; /* hacemos que ocupe toda la pantalla a cualquier resolución*/
+    z-index: 50; /* lo colocamos por encima del resto de componentes*/
+    background: rgba(128, 128, 128, 0.53); /*Color de fondo semitransparente*/
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-top: 30%;*/
+}
+.externo {
+    top: 0px;
+    margin-bottom:0;
+    height: 100%;
+    display: none;
+    
+}

@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+
+    <link href="~/css/colores.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/botones.css" rel="stylesheet" />
+
+    <title>Factory Performance Booster</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @* Uncomment to use the HtmlEditor control *@
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script> *@
+
+    @* Uncomment to use the Gantt control *@
+    @*<link href="~/css/devextreme/dx-gantt.css" rel="stylesheet" />*@
+
+    @* Uncomment to use the Diagram control *@
+    @*<link href="~/css/devextreme/dx-diagram.css" rel="stylesheet" />*@
+
+    <link href="~/css/devextreme/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/css/devextreme/dx.common.css" rel="stylesheet" />
+
+    @* Predefined themes: https://js.devexpress.com/DevExtreme/Guide/Themes_and_Styles/Predefined_Themes/ *@
+    <link href="~/css/devextreme/dx.light.css" rel="stylesheet" />
+
+    @* Uncomment to use the Gantt control *@
+    @*<script src="~/js/devextreme/dx-gantt.js"></script>*@
+
+    @* Uncomment to use the Diagram control *@
+    @*<script src="~/js/devextreme/dx-diagram.js"></script>*@
+
+    <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js/devextreme/bootstrap.js"></script>
+
+    <script src="~/js/devextreme/cldr.js"></script>
+    <script src="~/js/devextreme/cldr/event.js"></script>
+    <script src="~/js/devextreme/cldr/supplemental.js"></script>
+    <script src="~/js/devextreme/cldr/unresolved.js"></script>
+
+    <script src="~/js/devextreme/globalize.js"></script>
+    <script src="~/js/devextreme/globalize/message.js"></script>
+    <script src="~/js/devextreme/globalize/number.js"></script>
+    <script src="~/js/devextreme/globalize/currency.js"></script>
+    <script src="~/js/devextreme/globalize/date.js"></script>
+
+    @* Uncomment to enable client-side export *@
+    @*<script src="~/js/devextreme/jszip.js"></script>*@
+
+    <script src="~/js/devextreme/dx.all.js"></script>
+
+    @* Uncomment to provide geo-data for the VectorMap control *@
+    @* Docs: https://js.devexpress.com/DevExtreme/Guide/Widgets/VectorMap/Providing_Data/#Data_for_Areas *@
+    @*<script src="~/js/devextreme/vectormap-data/world.js"></script>*@
+
+    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+</head>
+
+<body style="padding-top: 3.5rem;">
+    @(Html.DevExtreme().Button().Icon("menu").OnClick("button_clickHandler").ID("btn_menu"))
+
+    <style>
+        #btn_menu {
+            left: 100;
+        }
+    </style>
+
+    <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
+        <a class="navbar-brand">Factory Performance Booster</a>
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="active nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    @(Html.DevExtreme().Drawer()
+        .ID("layout-drawer")
+        .MinSize(37)
+        .Height(250)
+        .Opened(new JS("JSON.parse(sessionStorage.getItem('drawerOpened'))"))
+        .RevealMode(DrawerRevealMode.Expand)
+        .OpenedStateMode(DrawerOpenedStateMode.Shrink)
+        .Template(@<text>
+                    @(Html.DevExtreme().List()
+                  .Width(200)
+                  .OnInitialized("list_onInitialized")
+                  .Items(items =>
+                               {
+                      items.Add().Text("Planificación").Icon("fas fa-ad").Option("path", @Url.Action("Index"));
+                      items.Add().Text("Monitoreo y Control").Icon("check").Option("path", @Url.Action("Sent"));
+                      items.Add().Text("Analítica").Icon("trash").Option("path", @Url.Action("Deleted"));
+                      items.Add().Text("Mejora Continua").Icon("mention").Option("path", @Url.Action("Spam"));
+                  })
+                  .KeyExpr("path")
+                  .SelectionMode(ListSelectionMode.Single)
+                  .OnSelectionChanged("list_onSelectionChanged")
+                    )
+        </text>)
+.Content(@<text>
+            <main role="main" class="container">
+                @RenderBody()
+            </main>
+</text>)
+    @*.Content(@<text>@RenderBody()</text>)*@
+    )
+
+
+
+    <script type="text/javascript">
+    function button_clickHandler() {
+        var drawer = $("#layout-drawer").dxDrawer("instance");
+        drawer.toggle();
+        sessionStorage.setItem("drawerOpened", JSON.stringify(drawer.option("opened")));
+        btn = document.getElementById("btn_menu");
+        btn.style.right = "100";
+
+        @*@(Html.DevExtreme().Drawer()
+        .ID("btn_menu")
+        .Position(DrawerPosition 3))*@
+    }
+
+    function list_onSelectionChanged(e) {
+        document.location.pathname = e.addedItems[0].path;
+    }
+
+    function list_onInitialized(e) {
+        var t = "@Url.Action()";
+        e.component.option("selectedItemKeys", [ "@Url.Action()" ])
+    }
+    </script>
+
+    <style>
+        .dx-drawer-panel-content, .dx-overlay-content {
+            background-color: #73B3C1;
+        }
+
+        .drawer-view-content {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        #layout-toolbar {
+            background-color: #6AACBB;
+            padding: 5px 10px;
+        }
+
+            #layout-toolbar .dx-toolbar-button .dx-button {
+                background-color: #6AACBB;
+                border: none;
+            }
+
+            #layout-toolbar .dx-toolbar-button > .dx-toolbar-item-content {
+                margin-left: -7px;
+            }
+
+            #layout-toolbar .dx-list-item-icon {
+                margin-right: 10px;
+            }
+    </style>
+
+    <div style="padding-bottom: 150px;"></div>
+    <br />
+    <br />
+    <br />
+    <footer class="footer" style="position:fixed; left:0px; bottom:20px; height:30px; width:100%"; background:#999;">
+        &copy; 2019 - Performance Booster <br />
+        <a asp-area="" asp-controller="Home" asp-action="Privacy">Management Suite</a>
+    </footer>
+</body>
+
+</html>

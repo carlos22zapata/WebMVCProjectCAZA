@@ -1,0 +1,34 @@
+﻿
+
+@{
+    ViewData["Title"] = "Configuracion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Configuracion</h1>
+
+<br />
+<br />
+
+<div class="row">
+    <span class="input-group-text">Hora del inicio de la jornada laboral</span>
+    <div class="col-xl-3">
+        @(Html.DevExtreme().DateBox()
+        .ID("horaDesde")
+        .Type(DateBoxType.Time)
+                .Value(DateTime.Now)
+        .DropDownButtonTemplate(@<i class="far fa-clock"></i>)
+    )
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <span class="input-group-text">Correo electronico supervisor</span>
+    <div class="dx-field">
+        <div class="dx-field-value">
+            @Html.DevExtreme()
+        </div>
+    </div>
+</div>

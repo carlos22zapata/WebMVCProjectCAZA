@@ -1,0 +1,417 @@
+﻿@model FactoryX.Models.PedidosModel
+
+@{
+    ViewData["Title"] = "Planificacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<hr style="color: #0056b2;" />
+
+<h1>Gestión de planes de producción</h1>
+<div class="row">
+
+    @*<button class="btn btn-primary" id="btnExportar">Exportar Excel</button>*@
+
+    @*&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel"
+           title="Exportar datos a archivo de Excel">
+            <i class="far fa-file-excel"></i>
+            Importar / Exportar archivo de excel
+        </a>*@
+
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @*<p>(carga de pedido)</p> &nbsp;&nbsp;&nbsp;*@
+        <button class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel_I"
+                title="Exportar datos a archivo de Excel" onclick="reset1()">
+            <i class="far fa-file-excel"></i>
+            Importar archivo de excel
+        </button>
+        &nbsp;&nbsp;
+        <a class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel_E"
+           title="Exportar datos a archivo de Excel">
+            <i class="far fa-file-excel"></i>
+            Exportar archivo modelo
+        </a>
+        &nbsp;&nbsp;
+        <a class="btn btn-danger agregar" data-toggle="modal" id="excel1" onclick="cierrePalnes()"
+           title="Cerrar plan">
+            <i class="far fa-file-excel"></i>
+            Cerrar plan
+        </a>
+    </div>
+
+    @* Importar archivo de Excel *@
+    <div class="modal fade" id="modalExcel_I" tabindex="-1" role="dialog" aria-labelledby="modalExcel_I">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title sin-padding" id="lbl_OBG">Importar archivo de excel</h4>
+                </div>
+                @* Cuerpo del modal *@
+                <div class="modal-body">
+
+                    <h6 id="tit"></h6>
+
+                    <div class="col-md-10">
+                        <br />
+                        <p>Seleccione el archivo que desea importar:</p>
+                        <input type="file" name="files" id="ie1" multiple />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* Exportar archivo de Excel *@
+    <div class="modal fade" id="modalExcel_E" tabindex="-1" role="dialog" aria-labelledby="modalExcel_E">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title sin-padding" id="lbl_OBG">Exportar archivo de excel</h4>
+                </div>
+                @* Cuerpo del modal *@
+                <div class="modal-body">
+
+                    <h6 id="tit"></h6>
+
+                    @*<a class="btn btn-primary"
+                           title="Descargar archivo con datos del pedido"
+                           onclick="descargaExcel()" style="color:white;">
+                            <i class="fas fa-cloud-download-alt" style="font-size:24px;"></i>
+                            Descargar
+                        </a>*@
+
+                    <a class="btn btn-primary"
+                       title="Descargar archivo con datos del pedido"
+                       asp-action="DescargarExcelPlantilla" class="btn btn-info" asp-route-idEmpresa="@ViewBag.idEmpresa">
+                        <i class="fas fa-cloud-download-alt" style="font-size:24px;"></i>
+                        Descargar
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<a asp-action="" class="btn btn-info col-xl-2" asp-route-idEmpresa="@ViewBag.idEmpresa">Importar</a>*@
+
+    <div class="scroller">
+        @*<form class="modal fade" id="modalSKU_Historico" role="dialog">*@
+        <form class="modal fade" id="modalPlanificacion" role="dialog">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header form-group">
+                        <h4 class="modal-title " style="display: block;">Opciones de exportación:</h4> <br />
+                    </div>
+                    <div class="row form-group">
+                        </br>
+                        <div class="col-xl-1"></div>
+                        <div class="col-xl-3">
+                            <a asp-action="DescargarExcel" class="btn btn-info" asp-route-idEmpresa="@ViewBag.idEmpresa">&nbsp;&nbsp;&nbsp;Todo&nbsp;&nbsp;&nbsp;</a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a class="btn btn-info" style="color: white;" onclick="abrirModalFiltro()">Por filtro</a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a asp-action="DescargarExcelPlantilla" class="btn btn-info" asp-route-idEmpresa="@ViewBag.idEmpresa">Plantilla</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer sin">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="scroller">
+        @*<form class="modal fade" id="modalSKU_Historico" role="dialog">*@
+        <form class="modal fade" id="modalPlanificacionFiltro" role="dialog">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header form-group">
+                        <h4 class="modal-title" style="display: block;">Por fecha de despacho:</h4> <br />
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xl-1"></div>
+                        <span class="input-group-text col-xl-2">&nbsp;&nbsp;Desde</span>
+                        <div class="col-xl-1"></div>
+                        <div class="col-xl-7">
+                            @(Html.DevExtreme().DateBox()
+                                .ID("diaDesdeEx")
+                                .Name("fini_")
+                                .Type(DateBoxType.Date)
+                                .Value(DateTime.Now)
+                                .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                            )
+                        </div>
+
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xl-1"></div>
+                        <span class="input-group-text col-xl-2">&nbsp;&nbsp;Hasta</span>
+                        <div class="col-xl-1"></div>
+                        <div class="col-xl-7">
+                            @(Html.DevExtreme().DateBox()
+                                .ID("diaHastaEx")
+                                .Name("ffin_")
+                                .Type(DateBoxType.Date)
+                                .Value(DateTime.Now)
+                                .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                            )
+                        </div>
+
+                    </div>
+
+                    @Html.Hidden("myVar", "03-03-2020");
+
+                    @{
+                        <script type="text/javascript">
+                            //var prueba = '03-03-2020';
+                            //alert($('#myVar').val());
+                        </script>
+
+                        var fini = "";
+                        //"<script language='javascript'> document.getElementById('diaDesdeEx').innerHTML.substring(fini_.search('value') + 7, fini_.search('value') + 17); </script> ";
+                        var ffin = @Html.Hidden("myVar");
+
+
+                    }
+
+                    @*<script>
+
+                            var prueba = $('#@ffin').val();
+
+                            alert(prueba);
+
+                        </script>
+
+                            <script>
+                                var a = document.createElement('a');
+                                var linkText = document.createTextNode("my title text");
+                                a.appendChild(linkText);
+                                a.title = "my title text";
+                                a.href = "http://example.com";
+                                document.body.appendChild(a);
+                            </script>*@
+
+                    <div class="modal-footer sin">
+                        <a asp-action="DescargarExcelFiltro" class="btn btn-outline-success" asp-route-idEmpresa="@ViewBag.idEmpresa" asp-route-fini_="@fini" asp-route-ffin_="@ffin">&nbsp;&nbsp;&nbsp;Aplicar&nbsp;&nbsp;&nbsp;</a>
+                        <button type="button" class="btn btn-outline-success" onclick="FechaExportacion()"><i class="fas"></i> Aplicar 2</button>
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+<br />
+
+<div>
+    <h5>Seleccione una orden de producción</h5>
+</div>
+
+<div>
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.PedidosVM>().ID("dg_PedidosGeneral")
+    .DataSource(ds => ds.Mvc()
+        .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+        .Controller("Planificacion")
+        .LoadAction("GetPedidosG")
+        .InsertAction("InsertPedidosGen")
+        //.UpdateAction("UpdateActivos")
+        .DeleteAction("DeletePedidosGen")
+        .Key("Cod_plan")
+        .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+    )
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .HoverStateEnabled(true)
+    .Paging(paging => paging.PageSize(5))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 5, 10, 20});
+        pager.ShowInfo(true);
+    })
+    .Selection(s => s.Mode(SelectionMode.Multiple))
+    .ShowBorders(true)
+    .Editing(editing => editing
+                        .Mode(GridEditMode.Row)
+                        .AllowAdding(true)
+                        .AllowDeleting(true)
+                        .UseIcons(true)
+                        .Texts(t => t.ConfirmDeleteMessage("Para borrar una orden de producción no debe tener sku asociados. \r\n" + "Esta seguro que desea eliminar el registro?"))
+                      )
+    .OnSelectionChanged("selection_changed")
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.Cod_plan).Width(150).Caption("Código O. Producción");
+
+        columns.AddFor(m => m.Des_pedido).MinWidth(200).AllowEditing(false).Caption("Estado");
+
+        columns.AddFor(m => m.Cod_centro).Width(150).Caption("Código planta")
+        .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Planificacion").LoadAction("GetCentros").Key("Cod_centro"))
+            .ValueExpr("Cod_centro")
+            .DisplayExpr("Cod_centro")
+         );
+
+        columns.AddFor(m => m.Des_centro).MinWidth(200).AllowEditing(false).Width(150).Caption("Nombre planta");
+
+    })
+        //.MasterDetail(m => m
+        //    .Enabled(true)
+        //    .Template(new TemplateName("grid-detalle"))
+        //)
+        .OnSelectionChanged("selection_changed")
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    )
+
+    <div class="selected-data">
+        <span class="caption">Registros seleccionados:</span>
+        <span id="selected-items-container">No hay registros seleccionados</span>
+    </div>
+</div>
+
+
+<br />
+<br />
+
+<div class="scroller" id="tb_pedidos" style="display:none;">
+
+    <div>
+        <h5 id="planSel" style="color:#b21e1e; ">No hay plan seleccionado</h5>
+    </div>
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.ListaPedidos>().ID("dg_Pedidos")
+        .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("Planificacion")
+            .LoadAction("GetPedidos")
+            .InsertAction("InsertPedidos")
+            .UpdateAction("UpdatePedidos")
+            .DeleteAction("DeletePedidos")
+            .Key("Id")
+            .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+        )
+        .ShowBorders(true)
+        .Paging(paging => paging.PageSize(5))
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] { 5, 10, 20 });
+            pager.ShowInfo(true);
+        })
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                          )
+        .Columns(columns =>
+        {
+
+            columns.AddFor(m => m.Cod_producto).Caption("Producto").MinWidth(100)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Planificacion").LoadAction("GetProductos").Key("Cod_producto"))
+            .ValueExpr("Cod_producto")
+            .DisplayExpr("Des_producto")
+            );
+
+            columns.AddFor(m => m.Cantidad).Caption("Cantidad").Width(80);
+
+            columns.AddFor(m => m.Fecha_desp).Caption("Fecha de despacho").Width(150);
+
+            columns.AddFor(m => m.Cod_unidad).Width(100).Caption("Unidad")
+            .Lookup(lookup => lookup
+                    .DataSource(d => d.Mvc().Controller("Planificacion").LoadAction("GetUnidad").Key("Cod_unidad"))
+                .ValueExpr("Cod_unidad")
+                .DisplayExpr("Cod_unidad")
+             );
+
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    //.Option("filterRow.applyFilter",Model)
+    )
+
+    <hr style="color: #0056b2;" />
+
+</div>
+
+@* Importar o exportar archivo de Excel *@
+<div class="modal fade" id="modalExcel" tabindex="-1" role="dialog" aria-labelledby="modalExcel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title sin-padding" id="lbl_OBG">Exportar / importar archivo de excel</h4>
+            </div>
+            @* Cuerpo del modal *@
+            <div class="modal-body">
+
+                <h6 id="tit"></h6>
+
+                <a class="btn btn-primary"
+                   asp-action="ExportGraf"
+                   asp-controller="Monitoreo"
+                   asp-route-grafico="1"
+                   asp-route-idEmpresa="@ViewBag.idEmpresa"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="Descargar archivo con datos del pedido">
+                    <i class="fas fa-cloud-download-alt" style="font-size:24px;"></i>
+                </a>
+
+                <a class="btn btn-primary"
+                   asp-action="ExportGraf"
+                   asp-controller="Monitoreo"
+                   asp-route-grafico="1"
+                   asp-route-idEmpresa="@ViewBag.idEmpresa"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="Cargar archivo del pedido">
+                    <i class="fas fa-cloud-upload-alt" style="font-size:24px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var Factory = Factory || {};
+    Factory.Urls = Factory.Urls || {};
+    Factory.Urls.baseUrl        = '@Url.Content("~")';
+    Factory.Urls.AsignaEmpresa  = '@Html.Raw(Url.Action("AsignaEmpresa","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.AsignaCod_plan = '@Html.Raw(Url.Action("AsignaCod_plan","Planificacion"))';
+    Factory.Urls.GuardaPlan = '@Html.Raw(Url.Action("GuardaPlan","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.EliminaPlan = '@Html.Raw(Url.Action("EliminaPlan","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))'; //Factory.Urls.PlanCerrado
+    Factory.Urls.PlanCerrado = '@Html.Raw(Url.Action("PlanCerrado","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.DescargarExcelFiltro = '@Html.Raw(Url.Action("DescargarExcelFiltro", "Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.Download = '@Html.Raw(Url.Action("Download", "Planificacion"))';
+    Factory.Urls.Productor = '@Html.Raw(Url.Action("Productos","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.InsertPedidosT = '@Html.Raw(Url.Action("InsertPedidosT", "Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.InsertPedidosT_Reng = '@Html.Raw(Url.Action("InsertPedidosT_Reng", "Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.CierrePlanes = '@Html.Raw(Url.Action("CierrePlanes", "Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+</script>
+
+
+<script src="~/js/Planificacion.js" asp-append-version="true"></script>

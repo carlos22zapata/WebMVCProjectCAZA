@@ -1,0 +1,311 @@
+﻿.header {
+    padding: 10px 16px;
+    background-image: linear-gradient(#04519b, #033C73 60%, #02325f);
+}
+
+.dotOG {
+    height: 25px;
+    width: 25px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top:10px;   
+}
+
+.dotE {
+    height: 25px;
+    width: 25px;
+    background-color: #fb7e81;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.dotOE {
+    height: 25px;
+    width: 25px;
+    background-color: #7be141;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.dotI {
+    height: 25px;
+    width: 25px;
+    background-color: #eb7df4;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.dotV {
+    height: 25px;
+    width: 25px;
+    background-color: #97c2fc;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.titles {
+    color: #ffffff;
+    margin-left: 15px;
+    font-weight:bold;
+    font-size: 22px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+}
+
+    .sticky + .content {
+        padding-top: 105px;
+    }
+
+.content {
+    padding: 16px;
+}
+
+.modal-lg {
+    max-width: 700px !important;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px ;
+   
+    display: inline-block;
+   
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.sin{
+    padding-bottom:5px;
+    padding-top:5px;
+}
+
+
+#icon-title{
+    font-size:15px;
+}
+
+.sin-padding{
+    padding-bottom: 0px;
+    padding-top:5px;
+}
+
+[data-toggle="collapse"] .fa:before {
+    content: "\f139";
+}
+
+[data-toggle="collapse"].collapsed .fa:before {
+    content: "\f13a";
+}
+
+.titlesn {
+    font-weight: bold;
+    color: #5C5453;
+}
+
+#PTable{
+    display:none;
+}
+
+#ITable{
+    display:none;
+}
+
+#showPTable:hover + #PTable{
+    display:table;
+    width:100%;
+}
+
+#showITable:hover + #ITable {
+    display: table;
+    width: 100%;
+}
+
+.fix {
+    table-layout: fixed;
+}
+
+.tipo{
+    width:20px;
+}
+
+.tipo2{
+    width:30px;
+}
+
+.tipo3 {
+    width: 30px !important;
+}
+
+.tipo5{
+    width:70px !important;
+}
+
+.brs {
+    border-bottom: 2pt solid red;
+}
+
+.br {
+    border-right: 2pt solid red !important;
+}
+
+.botones{
+    width:400px;  
+}
+
+.botonesW {
+    width: 300px;
+}
+
+.pequeño {
+    width: 150px;
+}
+
+
+.espacio{
+    margin-bottom:5px;
+}
+
+.botonEstrategia{
+    width:470px;
+}
+
+.botonDet {
+    width: 423px;
+}
+
+.botonInd {
+    width: 580px;
+}
+
+.margen{
+    margin-left: 35px;
+}
+
+.titlesP{
+    color:black;
+}
+
+.little{
+    max-width:70px !important;
+}
+
+.padtop{
+    margin-top:7px;
+}
+
+.column{
+    max-width:200px !important;
+}
+
+.highlight_row_accomp {
+    background-color: #67A8DA;
+}
+
+.mp{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.sp{
+    padding-left:0px;
+}
+
+.lga{
+    padding-left:20px;
+}
+
+.k{
+    text-align:center;
+}
+
+.tipo4{
+    width:450px;
+}
+
+.espacio2 {
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #bee5eb;
+    border-color: #17a2b8;
+}
+
+    .espacio2:hover {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+.espacio3 {
+    margin-bottom: 15px;
+}
+
+.tipoResponsable{
+    width:135px !important;
+}
+
+span:hover {
+    cursor: pointer;
+}
+
+#summary {
+    /*font-size: 14px;*/
+    /*line-height: 1.5;*/
+}
+
+    #summary p.collapse:not(.show) {
+        height: 120px !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    #summary p.collapsing {
+        min-height: 140px !important;
+    }
+
+    #summary a.collapsed:after {
+        content: 'Leer más';
+    }
+
+    #summary a:not(.collapsed):after {
+        content: 'Menos';
+    }
+
+
+#summary1 {
+    /*font-size: 14px;*/
+    /*line-height: 1.5;*/
+}
+
+    #summary1 p.collapse:not(.show) {
+        height: 20px !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
+    #summary1 p.collapsing {
+        min-height: 20px !important;
+    }
+
+    #summary1 a.collapsed:after {
+        content: 'Leer más';
+    }
+
+    #summary1 a:not(.collapsed):after {
+        content: 'Menos';
+    }
+
+.reporte {
+    background-color:#6f5499;
+}

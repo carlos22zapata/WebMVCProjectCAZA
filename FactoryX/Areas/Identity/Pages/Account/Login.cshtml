@@ -1,0 +1,89 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Performance - Cognitiva";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/login/util.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
+    <link href="~/css/wallpaper/wallpaper_login.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/botones.css" rel="stylesheet" asp-append-version="true" />
+    <title>Performance Booster</title>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>    
+    <header>       
+        <video id=videoBG autoplay muted loop>
+            <source src='~/lib/imagenes/wallpaper/inicio.mp4' type="video/mp4" />
+        </video>
+
+        <div class="container-fluid container-login100">         
+            <div class="container-fluid wrap-login100">
+                <p class="performance" style="font-family:Arial, Helvetica, sans-serif">Factory <br />Performance Booster</p>
+                <form id="account" method="post" class="login100-form validate-form">
+
+                    <span class="login100-form-logo">
+                        <img src="~/lib/imagenes/logo_cog.png" style="width:60px; height:50px;" alt="logo_cognitiva"/><br />
+                    </span>
+                   
+                    <br />
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                       
+                        <input asp-for="Input.Email" class="input100" placeholder="Usuario"  />
+                        <span asp-validation-for="Input.Email" class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        
+                        <input asp-for="Input.Password" class="input100" id="reveal" placeholder="Contraseña" style="display:inline; width:90% !important"/>
+                        <span class="input-group-btn" style="display:inline; text-align:center; background-color:#e8f0fe; padding:14px 2px 15px 5px; ">
+                            <button class="btn btn-default" type="button" onclick="Toggle()">
+                                <i class="fa fa-eye" id="eye" style="font-size:20px;"></i>
+                            </button>
+                        </span>
+                        @*<span asp-validation-for="Input.Password" class="focus-input100"></span>*@        
+                    </div>
+                    
+                    <br />
+                    <br />
+
+                        <div class="container-fluid container-login100-form-btn">
+                            <button type="submit" class="login100-form-btn">Ingresar</button>
+                        </div>
+                        <br />
+                        <br />
+
+                        <div class="container-fluid">
+                            <div class="text-center p-t-10">
+                                <a id="forgot-password" asp-page="./ForgotPassword">Recuperar clave</a>
+                            </div>
+                            <br />
+                            <br />
+                        </div>
+                </form>
+            </div>
+        </div>
+    </header>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+</html>
+<script src="~/js/toogle.js" asp-append-version="true"></script>
+<script src="~/js/Login.js" asp-append-version="true"></script>

@@ -1,0 +1,428 @@
+﻿@model FactoryX.Models.Dias_inactivos_model
+
+@{
+    ViewData["Title"] = "Inactividades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro de días de inactividad</h1>
+
+@*Código comentado*@
+<div>
+    @*<div class="scroller" id="tb_activos">
+
+            @(Html.DevExtreme().DataGrid<FactoryX.Models.ActivosLista>().ID("dg_Activos2")
+                .DataSource(ds => ds.Mvc()
+                    .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                    .Controller("Tablas")
+                    .LoadAction("GetActivos")
+                    .InsertAction("InsertActivos")
+                    .UpdateAction("UpdateActivos")
+                    .DeleteAction("DeleteActivos")
+                    .Key("Cod_activo")
+                    .OnBeforeSend("asignaId")
+                )
+                .ShowBorders(true)
+                .Editing(editing => editing
+                                    .Mode(GridEditMode.Row)
+                                    .AllowAdding(true)
+                                    .AllowUpdating(true)
+                                    .AllowDeleting(true)
+                                    .UseIcons(true)
+                                    .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                                  )
+                .Columns(columns =>
+                {
+                    columns.AddFor(m => m.Cod_activo).Width(150);
+
+                    columns.AddFor(m => m.Des_activo).MinWidth(200);
+
+                    columns.AddFor(m => m.Cod_grupo).Width(150)
+                    .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetAgrupacionActivos").Key("Cod_grupo"))
+                    .ValueExpr("Cod_grupo")
+                    .DisplayExpr("Des_grupo")
+                    );
+
+                    columns.Add().Caption("Opciones")
+                            .Type(GridCommandColumnType.Buttons)
+                            .Width(110)
+                            .Buttons(b =>
+                                    {
+
+                                b.Add().Name(GridColumnButtonName.Edit).Hint("Editar activo");
+                                b.Add().Name(GridColumnButtonName.Delete).Hint("Borrar activo");
+
+                                b.Add()
+                                .Hint("Definir horarios de activo")
+                                .Icon("fas fa-calendar-alt")
+                                .OnClick(@<text>abrirmodalHorariosActivos</text>);
+        });
+
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+            )
+    *@
+</div>
+
+@*<a class="btn btn-success agregar"
+       title="Agregar nueva orden de producción" onclick="ver_gruposActivos()">
+        Agregar registros por lote
+    </a>*@
+
+<br />
+
+<a class="btn btn-primary agregar" onclick="mostrarDias()" id="btnOM">
+    @*<i class="fas fa-cubes" > </i>*@
+    Registros por lote
+</a>
+
+<div id="grid_grupoActivos" style="display:none;">
+
+    <br />
+
+    <div class=" alert alert-success">
+        @*<h3>Agregar registros por lotes</h3>*@
+        <br />
+        <div class="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Fecha desde: </label> &nbsp;
+            <input type="date" id="fini" value="" onchange="fnGrafico1(@ViewBag.idEmpresa, tipoGG, 'H')" style="max-width:170px;" />
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Hasta: </label> &nbsp;
+            <input type="date" id="ffin" value="" onchange="fnGrafico1(@ViewBag.idEmpresa, tipoGG, 'H')" />
+
+            <div style="max-width:170px; display:none;">
+                @(Html.DevExtreme().DateBox().ID("hora2")
+                    .Type(DateBoxType.Time)
+                    .ShowClearButton(true)
+                    .Value(new DateTime(2016, 12, 1, 0, 0, 0))
+                )
+            </div>
+            &nbsp;&nbsp;
+        </div>
+        <br />
+
+        <div class="row">
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Hora desde: </label> &nbsp;
+
+            <div style="max-width:170px;">
+                @(Html.DevExtreme().DateBox().ID("hora1")
+                    .Type(DateBoxType.Time)
+                    .ShowClearButton(true)
+                    .Value(new DateTime(2016, 12, 1, 0, 0, 0))
+                )
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Hasta: </label> &nbsp;
+
+            <div style="max-width:170px;">
+                @(Html.DevExtreme().DateBox().ID("hora11")
+                    .Type(DateBoxType.Time)
+                    .ShowClearButton(true)
+                    .Value(new DateTime(2016, 12, 1, 0, 0, 0))
+                )
+            </div>
+        </div>
+        
+
+        <br />
+
+        <div class="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="Lunes" value="2" id="chLu"> &nbsp;&nbsp;
+            <label for="Lunes"> Lunes </label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Martes" value="3" id="chMa"> &nbsp;&nbsp;
+            <label for="Martes"> Martes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Miercoles" value="4" id="chMi"> &nbsp;&nbsp;
+            <label for="Miercoles"> Miercoles</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Jueves" value="5" id="chJu"> &nbsp;&nbsp;
+            <label for="Jueves"> Jueves</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Viernes" value="6" id="chVi"> &nbsp;&nbsp;
+            <label for="Viernes"> Viernes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Sabado" value="7" id="chSa"> &nbsp;&nbsp;
+            <label for="Sabado"> Sabado</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="checkbox" name="Domingo" value="1" id="chDo"> &nbsp;&nbsp;
+            <label for="Domingo"> Domingo</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+
+        <br />
+
+        <div class="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="row col-sm-6 ">
+                <label>Tipo de inactividad: </label> &nbsp;
+                @Html.DropDownList("CB_sel_tipo", new SelectList(Model.Tipo_tiempos_activos_view, "id", "Des_tipo"), "Seleccione un tipo")
+            </div>
+            <div class="row col-sm-6">
+                <label>Activo: </label> &nbsp;
+                @Html.DropDownList("CB_sel_activo", new SelectList(Model.Activos_view, "Cod_activo", "Des_activo"), "Todos los activos")
+
+            </div>
+        </div>
+        <br />
+        <div class="row col-md-12">
+            <label>Observación: </label> &nbsp;
+            <input type="text" id="txt_observa" value="" placeholder="Coloque aquí una observación" />
+        </div>
+
+
+        <br />
+
+        <div>
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-success" type="button" onclick="validaDias('i')">Guardar cambios</button>
+
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-outline-danger" type="button" onclick="validaDias('e')">Eliminar registros</button>
+
+            @*&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel"
+                title="Exportar datos a archivo de Excel">
+                <i class="far fa-file-excel"></i>
+                Importar archivo de excel
+            </a>*@
+        </div>
+    </div>
+
+    <br />
+    <hr style="color: #0056b2;" />
+
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    @*<p>(carga de pedido)</p> &nbsp;&nbsp;&nbsp;*@
+    <button class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel_I"
+       title="Exportar datos a archivo de Excel" onclick="reset1()">
+        <i class="far fa-file-excel"></i>
+        Importar archivo de excel
+    </button>
+    &nbsp;&nbsp;
+    <a class="btn btn-success agregar" data-toggle="modal" id="excel1" data-target="#modalExcel_E"
+       title="Exportar datos a archivo de Excel">
+        <i class="far fa-file-excel"></i>
+        Exportar archivo modelo
+    </a>
+</div>
+
+
+<br />
+<br />
+
+<h3>Días registrados</h3>
+<div>
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Tiempo_inactivo_activos_view>().ID("dg_tia")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Tablas")
+            .LoadAction("GetTia")
+            .InsertAction("InsertTia")
+            .Key("id")
+            .UpdateAction("UpdateTia")
+            .DeleteAction("DeleteTia")
+            .OnBeforeSend("asignaId")
+
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+
+                          //.Texts(t => t.ConfirmDeleteTitle("Eliminar"))
+                          )
+        .Columns(columns =>
+        {
+            //columns.AddFor(m => m.id).Visible(false);
+
+            columns.AddFor(m => m.Fecha).DataType(GridColumnDataType.Date).Format("dd/MM/yyyy").Width(140).Caption("Fecha")
+            .EditorOptions( new {
+                dateSerializationFormat = "yyyy-MM-ddTHH:mm:ss"
+            });
+
+            columns.AddFor(m => m.Fecha_desde).Format("HH:mm").Width(140).Caption("Hora inicio")
+            .EditorOptions(new
+            { 
+                type = "time",
+                dateSerializationFormat = "yyyy-MM-ddTHH:mm:ss"
+            });
+
+            columns.AddFor(m => m.Fecha_hasta).Format("HH:mm").Width(140).Caption("Hora fin")
+            .EditorOptions(new
+            {
+                //displayFormat = "shortTime",  
+                type = "time",
+                dateSerializationFormat = "yyyy-MM-ddTHH:mm:ss"
+            })  ;
+
+            columns.AddFor(m => m.id_Tipo).Caption("Tipo de inactividad").MinWidth(100)
+               .Lookup(lookup => lookup
+                   .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetTipoTia").Key("id"))
+               .ValueExpr("id")
+               .DisplayExpr("Des_tipo")
+            );
+
+            columns.AddFor(m => m.Cod_activo).Caption("Activo asociado").MinWidth(100)
+                //.LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetActivos").LoadParams(new { idEmpresa = ViewBag.idEmpresa }).Key("Cod_activo"))
+                .ValueExpr("Cod_activo")
+                .DisplayExpr("Cod_activo")
+             );
+
+            columns.AddFor(m => m.Observacion).Caption("Observación");
+
+
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+    )
+
+    <br />
+    <hr style="color: #0056b2;" />
+</div>
+
+
+<br />
+
+<h3>Tipos de inactividad</h3>
+
+<br />
+
+<a class="dx-button" onclick="mostrarTipoDias()"> &nbsp; Ver tipos de inactividad &nbsp; </a>
+
+
+<div id="tipo_inactividad" style="display:none;">
+    @* Sección para administrar los tipos de incidencias *@
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Tipo_tiempos_activos>().ID("dg_tipo_tia")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Tablas")
+            .LoadAction("GetTipoTia")
+            .InsertAction("InsertTipoTia")
+            .Key("id")
+            .UpdateAction("UpdateTipoTia")
+            .DeleteAction("DeleteTipoTia")
+            .OnBeforeSend("asignaId")
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                          )
+        .Columns(columns =>
+         {
+             //columns.AddFor(m => m.id).Visible(false);
+
+             //columns.AddFor(m => m.id).Width(100).Visible(true);
+
+             columns.AddFor(m => m.Des_tipo);
+
+         })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+    )
+</div>
+
+@* Importar archivo de Excel *@
+<div class="modal fade" id="modalExcel_I" tabindex="-1" role="dialog" aria-labelledby="modalExcel_I">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title sin-padding" id="lbl_OBG">Importar archivo de excel</h4>
+            </div>
+            @* Cuerpo del modal *@
+            <div class="modal-body">
+
+                <h6 id="tit"></h6>
+
+                @*<a class="btn btn-primary"
+                   title="Descargar archivo con datos del pedido"
+                   onclick="descargaExcel()" style="color:white;">
+                    <i class="fas fa-cloud-download-alt" style="font-size:24px;"></i>
+                    Descargar
+                </a>*@
+
+                <div class="col-md-10">
+                    <br />
+                    <p>Seleccione el archivo que desea importar:</p>
+                    <input type="file" name="files" id="input-excel" multiple />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Exportar archivo de Excel *@
+<div class="modal fade" id="modalExcel_E" tabindex="-1" role="dialog" aria-labelledby="modalExcel_E">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title sin-padding" id="lbl_OBG">Exportar archivo de excel</h4>
+            </div>
+            @* Cuerpo del modal *@
+            <div class="modal-body">
+
+                <h6 id="tit"></h6>
+
+                <a class="btn btn-primary"
+                   title="Descargar archivo con datos del pedido"
+                   onclick="descargaExcel()" style="color:white;">
+                    <i class="fas fa-cloud-download-alt" style="font-size:24px;"></i>
+                    Descargar
+                </a>
+
+                @*<div class="col-md-10">
+                    <br />
+                    <p>Seleccione el archivo que desea importar:</p>
+                    <input type="file" name="files" id="input-excel" multiple />
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.guardaFechas  = '@Html.Raw(Url.Action("guardaFechas","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.LeeExcel      = '@Html.Raw(Url.Action("LeeExcel","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.InsertTia     = '@Html.Raw(Url.Action("InsertTia","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ConsultaCapacidadesActivos = '@Html.Raw(Url.Action("ConsultaCapacidadesActivos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.eliminaFechas = '@Html.Raw(Url.Action("eliminaFechas","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+</script>
+
+<script src="~/js/TablasPrincipales.js"></script>
+<script src="~/js/multi-step-modal.js"></script>
+<script src="~/js/DiasInactivos.js"></script>

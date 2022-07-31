@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "Análisis de productos";
+    Layout = "";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/css/qrcode-reader.min.css?env=dev">
+<link href="~/css/bordes_reportes.css" rel="stylesheet" />
+@*<h1>Reporte de productos</h1>*@
+
+
+
+<script src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/qrcode-reader.min.js?env=dev"></script>
+
+<script>
+
+    $(function () {
+
+        // overriding path of JS script and audio
+        $.qrCodeReader.jsQRpath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/jsQR/jsQR.min.js";
+        //$.qrCodeReader.beepPath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3";
+
+        // bind all elements of a given class
+        $(".qrcode-reader").qrCodeReader();
+
+        // bind elements by ID with specific options
+        $("#openreader-multi2").qrCodeReader({ multiple: true, target: "#multiple2", skipDuplicates: false });
+        $("#openreader-multi3").qrCodeReader({ multiple: true, target: "#multiple3" });
+
+        // read or follow qrcode depending on the content of the target input
+        $("#openreader-single2").qrCodeReader({
+            callback: function (code) {
+                if (code) {
+                    window.location.href = code;
+                }
+            }
+        }).off("click.qrCodeReader").on("click", function () {
+            var qrcode = $("#single2").val().trim();
+            if (qrcode) {
+                window.location.href = qrcode;
+            } else {
+                $.qrCodeReader.instance.open.call(this);
+            }
+        });
+    });
+
+</script>
+
+@**Aquí comienza la parte para la generación del código QR de acuerdo al código del producto*@
+
+<br />
+<br />
+
+
+<script src="~/js/QRcode/qrCodeGenerador.js" asp-append-version="true"></script>
+
+<br />
+
+@*@for (int i = 0; i < 3; i++)
+{*@
+
+<div id="contenedor">    
+    @*<div id="qrResult1" ></div>*@
+    @*<label id="etiqueta1" style="font-size:10px;"></label>*@  
+</div>
+
+    @*<script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById('qrResult'), {
+            width: 80,
+            height: 80
+        });
+    </script>*@
+
+@*}*@
+
+
+
+<br />
+
+
+
+
+
+
+
+@*<script src="~/js/DetallesProductos.js"></script>*@
+<script src="~/js/ReporteEtiquetasProductos.js"></script>
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GetProductos = '@Html.Raw(Url.Action("GetProductos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.Abre_reporte_qr = '@Html.Raw(Url.Action("Abre_reporte_qr", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+
+</script>

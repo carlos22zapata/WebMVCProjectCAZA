@@ -1,0 +1,1670 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+    background-image: linear-gradient(#04519b, #033C73 60%, #02325f);
+    padding: 15px 20px 35px 0px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+.centro {
+    text-align: center;
+}
+
+.n {
+    color: #495057;
+}
+
+
+.ir-arriba {
+    display: inline-block;
+    padding: 10px;
+    background-color: #337ec6;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 1;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+    /*display: none;
+    padding: 20px;
+    background: #024959;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;*/
+}
+
+.reordenar-lienzo {
+    display: inline-block;
+    padding: 10px;
+    background-color: #337ec6;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 70px;
+    z-index: 1;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.btn-editar {
+    display: inline-block;
+    padding: 10px;
+    background-color: #FFCC00;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    /*position: fixed;
+    bottom: 50px;
+    right: 70px;*/
+    /*z-index: 1;*/
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.btn-definir {
+    display: inline-block;
+    padding: 10px;
+    background-color: #17A2B8;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    /*position: fixed;
+    bottom: 50px;
+    right: 70px;*/
+    /*z-index: 1;*/
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.datePicker-CAZA {
+    background-color: #F4F8FF;
+    border-radius: 7px;
+    height: 50px;   
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    border: none;
+    padding: 10px;
+}
+
+#controlSku {
+    background-color: black;
+    color: red;
+}
+
+.desordenar-lienzo {
+    display: inline-block;
+    padding: 10px;
+    background-color: #337ec6;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 120px;
+    z-index: 1;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.ayuda-lienzo {
+    display: inline-block;
+    padding: 10px;
+    background-color: #337ec6;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 170px;
+    z-index: 1;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.ir-lienzo {
+    padding: 10px;
+    background-color: #337ec6;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}
+
+.circulo {
+    padding: 10px;
+    font-size: 0px;
+    cursor: pointer;
+    z-index: 1;
+    height: 40px;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 1px solid #000000;
+    border-color: black;
+}
+
+.swal-text {
+    background-color: #FEFAE3;
+    padding: 17px;
+    border: 1px solid #F0E1A1;
+    display: block;
+    margin: 22px;
+    text-align: center;
+    color: #61534e;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?2ewujq');
+    src: url('fonts/icomoon.eot?2ewujq#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?2ewujq') format('truetype'), url('fonts/icomoon.woff?2ewujq') format('woff'), url('fonts/icomoon.svg?2ewujq#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+    content: "\e900";
+}
+
+.icon-home2:before {
+    content: "\e901";
+}
+
+.icon-home3:before {
+    content: "\e902";
+}
+
+.icon-office:before {
+    content: "\e903";
+}
+
+.icon-newspaper:before {
+    content: "\e904";
+}
+
+.icon-pencil:before {
+    content: "\e905";
+}
+
+.icon-quill:before {
+    content: "\e907";
+}
+
+.icon-paint-format:before {
+    content: "\e90c";
+}
+
+.icon-image:before {
+    content: "\e90d";
+}
+
+.icon-images:before {
+    content: "\e90e";
+}
+
+.icon-camera:before {
+    content: "\e90f";
+}
+
+.icon-video-camera:before {
+    content: "\e914";
+}
+
+.icon-dice:before {
+    content: "\e915";
+}
+
+.icon-bullhorn:before {
+    content: "\e91a";
+}
+
+.icon-mic:before {
+    content: "\e91e";
+}
+
+.icon-book:before {
+    content: "\e91f";
+}
+
+.icon-books:before {
+    content: "\e920";
+}
+
+.icon-library:before {
+    content: "\e921";
+}
+
+.icon-file-text:before {
+    content: "\e922";
+}
+
+.icon-profile:before {
+    content: "\e923";
+}
+
+.icon-file-empty:before {
+    content: "\e924";
+}
+
+.icon-files-empty:before {
+    content: "\e925";
+}
+
+.icon-file-text2:before {
+    content: "\e926";
+}
+
+.icon-paste:before {
+    content: "\e92d";
+}
+
+.icon-stack:before {
+    content: "\e92e";
+}
+
+.icon-folder:before {
+    content: "\e92f";
+}
+
+.icon-folder-open:before {
+    content: "\e930";
+}
+
+.icon-folder-plus:before {
+    content: "\e931";
+}
+
+.icon-folder-minus:before {
+    content: "\e932";
+}
+
+.icon-folder-download:before {
+    content: "\e933";
+}
+
+.icon-folder-upload:before {
+    content: "\e934";
+}
+
+.icon-price-tag:before {
+    content: "\e935";
+}
+
+.icon-price-tags:before {
+    content: "\e936";
+}
+
+.icon-qrcode:before {
+    content: "\e938";
+}
+
+.icon-ticket:before {
+    content: "\e939";
+}
+
+.icon-cart:before {
+    content: "\e93a";
+}
+
+.icon-credit-card:before {
+    content: "\e93f";
+}
+
+.icon-calculator:before {
+    content: "\e940";
+}
+
+.icon-lifebuoy:before {
+    content: "\e941";
+}
+
+.icon-phone-hang-up:before {
+    content: "\e943";
+}
+
+.icon-address-book:before {
+    content: "\e944";
+}
+
+.icon-envelop:before {
+    content: "\e945";
+}
+
+.icon-pushpin:before {
+    content: "\e946";
+}
+
+.icon-compass:before {
+    content: "\e949";
+}
+
+.icon-history:before {
+    content: "\e94d";
+}
+
+.icon-clock:before {
+    content: "\e94e";
+}
+
+.icon-alarm:before {
+    content: "\e950";
+}
+
+.icon-bell:before {
+    content: "\e951";
+}
+
+.icon-stopwatch:before {
+    content: "\e952";
+}
+
+.icon-printer:before {
+    content: "\e954";
+}
+
+.icon-keyboard:before {
+    content: "\e955";
+}
+
+.icon-mobile:before {
+    content: "\e958";
+}
+
+.icon-mobile2:before {
+    content: "\e959";
+}
+
+.icon-undo:before {
+    content: "\e965";
+}
+
+.icon-redo:before {
+    content: "\e966";
+}
+
+.icon-undo2:before {
+    content: "\e967";
+}
+
+.icon-redo2:before {
+    content: "\e968";
+}
+
+.icon-forward:before {
+    content: "\e969";
+}
+
+.icon-reply:before {
+    content: "\e96a";
+}
+
+.icon-bubble:before {
+    content: "\e96b";
+}
+
+.icon-bubbles:before {
+    content: "\e96c";
+}
+
+.icon-bubbles2:before {
+    content: "\e96d";
+}
+
+.icon-bubbles3:before {
+    content: "\e96f";
+}
+
+.icon-bubbles4:before {
+    content: "\e970";
+}
+
+.icon-user:before {
+    content: "\e971";
+}
+
+.icon-users:before {
+    content: "\e972";
+}
+
+.icon-user-plus:before {
+    content: "\e973";
+}
+
+.icon-user-minus:before {
+    content: "\e974";
+}
+
+.icon-user-check:before {
+    content: "\e975";
+}
+
+.icon-user-tie:before {
+    content: "\e976";
+}
+
+.icon-quotes-left:before {
+    content: "\e977";
+}
+
+.icon-quotes-right:before {
+    content: "\e978";
+}
+
+.icon-hour-glass:before {
+    content: "\e979";
+}
+
+.icon-spinner2:before {
+    content: "\e97b";
+}
+
+.icon-spinner11:before {
+    content: "\e984";
+}
+
+.icon-binoculars:before {
+    content: "\e985";
+}
+
+.icon-search:before {
+    content: "\e986";
+}
+
+.icon-zoom-in:before {
+    content: "\e987";
+}
+
+.icon-zoom-out:before {
+    content: "\e988";
+}
+
+.icon-enlarge:before {
+    content: "\e989";
+}
+
+.icon-shrink:before {
+    content: "\e98a";
+}
+
+.icon-enlarge2:before {
+    content: "\e98b";
+}
+
+.icon-shrink2:before {
+    content: "\e98c";
+}
+
+.icon-key:before {
+    content: "\e98d";
+}
+
+.icon-key2:before {
+    content: "\e98e";
+}
+
+.icon-lock:before {
+    content: "\e98f";
+}
+
+.icon-unlocked:before {
+    content: "\e990";
+}
+
+.icon-wrench:before {
+    content: "\e991";
+}
+
+.icon-equalizer:before {
+    content: "\e992";
+}
+
+.icon-equalizer2:before {
+    content: "\e993";
+}
+
+.icon-cog:before {
+    content: "\e994";
+}
+
+.icon-cogs:before {
+    content: "\e995";
+}
+
+.icon-hammer:before {
+    content: "\e996";
+}
+
+.icon-magic-wand:before {
+    content: "\e997";
+}
+
+.icon-aid-kit:before {
+    content: "\e998";
+}
+
+.icon-bug:before {
+    content: "\e999";
+}
+
+.icon-pie-chart:before {
+    content: "\e99a";
+}
+
+.icon-stats-dots:before {
+    content: "\e99b";
+}
+
+.icon-stats-bars:before {
+    content: "\e99c";
+}
+
+.icon-stats-bars2:before {
+    content: "\e99d";
+}
+
+.icon-trophy:before {
+    content: "\e99e";
+}
+
+.icon-gift:before {
+    content: "\e99f";
+}
+
+.icon-mug:before {
+    content: "\e9a2";
+}
+
+.icon-spoon-knife:before {
+    content: "\e9a3";
+}
+
+.icon-leaf:before {
+    content: "\e9a4";
+}
+
+.icon-rocket:before {
+    content: "\e9a5";
+}
+
+.icon-meter:before {
+    content: "\e9a6";
+}
+
+.icon-meter2:before {
+    content: "\e9a7";
+}
+
+.icon-hammer2:before {
+    content: "\e9a8";
+}
+
+.icon-fire:before {
+    content: "\e9a9";
+}
+
+.icon-lab:before {
+    content: "\e9aa";
+}
+
+.icon-magnet:before {
+    content: "\e9ab";
+}
+
+.icon-bin:before {
+    content: "\e9ac";
+}
+
+.icon-bin2:before {
+    content: "\e9ad";
+}
+
+.icon-briefcase:before {
+    content: "\e9ae";
+}
+
+.icon-airplane:before {
+    content: "\e9af";
+}
+
+.icon-truck:before {
+    content: "\e9b0";
+}
+
+.icon-road:before {
+    content: "\e9b1";
+}
+
+.icon-accessibility:before {
+    content: "\e9b2";
+}
+
+.icon-target:before {
+    content: "\e9b3";
+}
+
+.icon-shield:before {
+    content: "\e9b4";
+}
+
+.icon-power:before {
+    content: "\e9b5";
+}
+
+.icon-switch:before {
+    content: "\e9b6";
+}
+
+.icon-power-cord:before {
+    content: "\e9b7";
+}
+
+.icon-clipboard:before {
+    content: "\e9b8";
+}
+
+.icon-list-numbered:before {
+    content: "\e9b9";
+}
+
+.icon-list:before {
+    content: "\e9ba";
+}
+
+.icon-list2:before {
+    content: "\e9bb";
+}
+
+.icon-tree:before {
+    content: "\e9bc";
+}
+
+.icon-menu:before {
+    content: "\e9bd";
+}
+
+.icon-menu2:before {
+    content: "\e9be";
+}
+
+.icon-menu3:before {
+    content: "\e9bf";
+}
+
+.icon-menu4:before {
+    content: "\e9c0";
+}
+
+.icon-cloud:before {
+    content: "\e9c1";
+}
+
+.icon-cloud-download:before {
+    content: "\e9c2";
+}
+
+.icon-cloud-upload:before {
+    content: "\e9c3";
+}
+
+.icon-cloud-check:before {
+    content: "\e9c4";
+}
+
+.icon-download2:before {
+    content: "\e9c5";
+}
+
+.icon-upload2:before {
+    content: "\e9c6";
+}
+
+.icon-download3:before {
+    content: "\e9c7";
+}
+
+.icon-upload3:before {
+    content: "\e9c8";
+}
+
+.icon-sphere:before {
+    content: "\e9c9";
+}
+
+.icon-earth:before {
+    content: "\e9ca";
+}
+
+.icon-link:before {
+    content: "\e9cb";
+}
+
+.icon-flag:before {
+    content: "\e9cc";
+}
+
+.icon-attachment:before {
+    content: "\e9cd";
+}
+
+.icon-eye:before {
+    content: "\e9ce";
+}
+
+.icon-eye-plus:before {
+    content: "\e9cf";
+}
+
+.icon-eye-minus:before {
+    content: "\e9d0";
+}
+
+.icon-eye-blocked:before {
+    content: "\e9d1";
+}
+
+.icon-man:before {
+    content: "\e9dc";
+}
+
+.icon-woman:before {
+    content: "\e9dd";
+}
+
+.icon-man-woman:before {
+    content: "\e9de";
+}
+
+.icon-point-up:before {
+    content: "\ea03";
+}
+
+.icon-point-right:before {
+    content: "\ea04";
+}
+
+.icon-point-down:before {
+    content: "\ea05";
+}
+
+.icon-point-left:before {
+    content: "\ea06";
+}
+
+.icon-warning:before {
+    content: "\ea07";
+}
+
+.icon-notification:before {
+    content: "\ea08";
+}
+
+.icon-question:before {
+    content: "\ea09";
+}
+
+.icon-plus:before {
+    content: "\ea0a";
+}
+
+.icon-minus:before {
+    content: "\ea0b";
+}
+
+.icon-blocked:before {
+    content: "\ea0e";
+}
+
+.icon-cross:before {
+    content: "\ea0f";
+}
+
+.icon-checkmark:before {
+    content: "\ea10";
+}
+
+.icon-checkmark2:before {
+    content: "\ea11";
+}
+
+.icon-spell-check:before {
+    content: "\ea12";
+}
+
+.icon-enter:before {
+    content: "\ea13";
+}
+
+.icon-exit:before {
+    content: "\ea14";
+}
+
+.icon-play2:before {
+    content: "\ea15";
+}
+
+.icon-pause:before {
+    content: "\ea16";
+}
+
+.icon-stop:before {
+    content: "\ea17";
+}
+
+.icon-previous:before {
+    content: "\ea18";
+}
+
+.icon-next:before {
+    content: "\ea19";
+}
+
+.icon-backward:before {
+    content: "\ea1a";
+}
+
+.icon-forward2:before {
+    content: "\ea1b";
+}
+
+.icon-play3:before {
+    content: "\ea1c";
+}
+
+.icon-pause2:before {
+    content: "\ea1d";
+}
+
+.icon-stop2:before {
+    content: "\ea1e";
+}
+
+.icon-backward2:before {
+    content: "\ea1f";
+}
+
+.icon-forward3:before {
+    content: "\ea20";
+}
+
+.icon-first:before {
+    content: "\ea21";
+}
+
+.icon-last:before {
+    content: "\ea22";
+}
+
+.icon-previous2:before {
+    content: "\ea23";
+}
+
+.icon-next2:before {
+    content: "\ea24";
+}
+
+.icon-eject:before {
+    content: "\ea25";
+}
+
+.icon-loop:before {
+    content: "\ea2d";
+}
+
+.icon-loop2:before {
+    content: "\ea2e";
+}
+
+.icon-infinite:before {
+    content: "\ea2f";
+}
+
+.icon-shuffle:before {
+    content: "\ea30";
+}
+
+.icon-arrow-up-left:before {
+    content: "\ea31";
+}
+
+.icon-arrow-up:before {
+    content: "\ea32";
+}
+
+.icon-arrow-up-right:before {
+    content: "\ea33";
+}
+
+.icon-arrow-right:before {
+    content: "\ea34";
+}
+
+.icon-arrow-down-right:before {
+    content: "\ea35";
+}
+
+.icon-arrow-down:before {
+    content: "\ea36";
+}
+
+.icon-arrow-down-left:before {
+    content: "\ea37";
+}
+
+.icon-arrow-left:before {
+    content: "\ea38";
+}
+
+.icon-arrow-up-left2:before {
+    content: "\ea39";
+}
+
+.icon-arrow-up2:before {
+    content: "\ea3a";
+}
+
+.icon-arrow-up-right2:before {
+    content: "\ea3b";
+}
+
+.icon-arrow-right2:before {
+    content: "\ea3c";
+}
+
+.icon-arrow-down-right2:before {
+    content: "\ea3d";
+}
+
+.icon-arrow-down2:before {
+    content: "\ea3e";
+}
+
+.icon-arrow-down-left2:before {
+    content: "\ea3f";
+}
+
+.icon-arrow-left2:before {
+    content: "\ea40";
+}
+
+.icon-circle-up:before {
+    content: "\ea41";
+}
+
+.icon-circle-right:before {
+    content: "\ea42";
+}
+
+.icon-circle-down:before {
+    content: "\ea43";
+}
+
+.icon-circle-left:before {
+    content: "\ea44";
+}
+
+.icon-tab:before {
+    content: "\ea45";
+}
+
+.icon-move-up:before {
+    content: "\ea46";
+}
+
+.icon-move-down:before {
+    content: "\ea47";
+}
+
+.icon-sort-alpha-asc:before {
+    content: "\ea48";
+}
+
+.icon-sort-alpha-desc:before {
+    content: "\ea49";
+}
+
+.icon-sort-numeric-asc:before {
+    content: "\ea4a";
+}
+
+.icon-sort-numberic-desc:before {
+    content: "\ea4b";
+}
+
+.icon-sort-amount-asc:before {
+    content: "\ea4c";
+}
+
+.icon-sort-amount-desc:before {
+    content: "\ea4d";
+}
+
+.icon-shift:before {
+    content: "\ea4f";
+}
+
+.icon-ctrl:before {
+    content: "\ea50";
+}
+
+.icon-opt:before {
+    content: "\ea51";
+}
+
+.icon-radio-checked:before {
+    content: "\ea54";
+}
+
+.icon-radio-checked2:before {
+    content: "\ea55";
+}
+
+.icon-radio-unchecked:before {
+    content: "\ea56";
+}
+
+.icon-crop:before {
+    content: "\ea57";
+}
+
+.icon-make-group:before {
+    content: "\ea58";
+}
+
+.icon-scissors:before {
+    content: "\ea5a";
+}
+
+.icon-filter:before {
+    content: "\ea5b";
+}
+
+.icon-omega:before {
+    content: "\ea66";
+}
+
+.icon-sigma:before {
+    content: "\ea67";
+}
+
+.icon-superscript:before {
+    content: "\ea69";
+}
+
+.icon-subscript:before {
+    content: "\ea6a";
+}
+
+.icon-superscript2:before {
+    content: "\ea6b";
+}
+
+.icon-subscript2:before {
+    content: "\ea6c";
+}
+
+.icon-text-color:before {
+    content: "\ea6d";
+}
+
+.icon-pagebreak:before {
+    content: "\ea6e";
+}
+
+.icon-clear-formatting:before {
+    content: "\ea6f";
+}
+
+.icon-table:before {
+    content: "\ea70";
+}
+
+.icon-table2:before {
+    content: "\ea71";
+}
+
+.icon-insert-template:before {
+    content: "\ea72";
+}
+
+.icon-pilcrow:before {
+    content: "\ea73";
+}
+
+.icon-ltr:before {
+    content: "\ea74";
+}
+
+.icon-mail4:before {
+    content: "\ea86";
+}
+
+.swal-text {
+    background-color: #FEFAE3;
+    padding: 17px;
+    border: 1px solid #F0E1A1;
+    display: block;
+    margin: 22px;
+    text-align: justify;
+    color: #61534e;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/*Estilo Árbol básico*/
+/*Paleta: Amarillo = #EED78E, Turquesa = #6AACBB*, Gris = #494846*/
+body {
+    font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans;
+}
+
+#div_tree {
+    font: 20px Verdana, sans-serif;
+    display: inline-block;
+    width: 500px;
+    color: black; /*Color de letra de arbol*/
+    background-color: #6AACBB; /*fondo de arbol*/
+}
+
+#botonMain {
+    color: black;
+    margin: 2px;
+    padding: 4px;
+    outline: none;
+    left: 2px;
+}
+/*#div_log {
+	width: 400px;
+	height: 400px;
+	overflow: scroll;
+	padding:10px;
+	vertical-align: top;
+	display: inline-block;
+	border: 1px solid gray;
+	font: 10px Verdana, sans-serif;
+	line-height: 16px;
+}*/
+/* The sidebar menu */
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 62px;
+    left: 0;
+    background-color: #6AACBB; /* todo el fondo principal de la barra que se desliza*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 6px; /* Place content 60px from the top */
+    transition: 0.1s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+    /* The sidebar links  Letra de {arbol*/
+    .sidebar a {
+        padding: 4px 4px 4px 16px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #6AACBB;
+        /*display: block;*/
+        transition: 0.1s;
+        /*background-color: #6AACBB;*/ /*subryado de palabras*/
+    }
+
+    /* When you mouse over the navigation links, change their color 
+.sidebar a:hover {
+	color: black;
+  }*/
+
+    /* Position and style the close button (top right corner) */
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        font-size: 35px;
+        margin-left: 50px;
+    }
+
+/* The button used to open the sidebar */
+.openbtn {
+    font-size: 25px;
+    top: 0;
+    cursor: pointer;
+    background-color: #6AACBB; /*fondo donde esta icono de boton*/
+    color: #6AACBB;
+    padding: 0px 0px;
+    border: none;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left 0.1s; /* If you want a transition effect */
+    padding: 0px;
+    top: 62px;
+    height: 100%;
+    width: 35px;
+}
+
+/*#barraSuperior {
+    color: #6AACBB;
+    background-color: #2F3636;
+
+}*/
+
+#cuerpoPrincipal {
+    transition: 0.1s;
+}
+
+#pie {
+    color: #6AACBB;
+    background-color: #6AACBB;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+        .sidebar a {
+            font-size: 18px;
+        }
+}
+
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 320px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 400px;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #6AACBB;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #6AACBB;
+}
+
+.highcharts-data-table tr:hover {
+    background: #6AACBB;
+}
+/*Otro archivo CSS*/
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    background: url(vline.png) repeat-y;
+    margin: 0;
+    padding: 0;
+    padding-left: 7px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+li.last {
+    background-image: 'url("css/lastnode.png")';
+    background-repeat: no-repeat;
+}
+
+ul.tree ul {
+    padding-left: 7px;
+}
+
+ul.tree li {
+    margin: 0;
+    padding: 0 12px;
+    line-height: 22px;
+    background: url(node.png) no-repeat;
+}
+
+    ul.tree li.last {
+        background: #6AACBB url(lastnode.png) no-repeat;
+    }
+
+img.exp_col {
+    position: absolute;
+    margin-top: 4px;
+    margin-left: -20px;
+    vertical-align: sub;
+}
+
+img.exp_col_empty {
+    position: absolute;
+    margin-top: 4px;
+    margin-left: -20px;
+    vertical-align: sub;
+    width: 16px;
+}
+
+img.icon_tree {
+    vertical-align: middle;
+    padding-left: 3px;
+    margin-top: -3px;
+}
+
+a.node {
+    padding: 2px;
+}
+
+span.node a {
+    padding-left: 3px;
+}
+
+span.node {
+    /*margin-left: -1px;
+    padding-right: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;*/
+}
+
+    span.node:hover {
+        /*margin-left: -1px;
+        padding-right: 3px;
+        padding-top: 4px;
+        padding-bottom: 4px;*/
+        background-color: #EED78E;
+        /*border: 1px solid black;
+        border-radius: 1px;*/
+    }
+
+span.node_selected {
+    /*margin-left: 0px;*/
+    /*padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;*/
+    /*background-color: #EED78E;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 2px;*/
+}
+
+    span.node_selected a {
+        padding-left: 0px;
+    }
+
+.menu, .sub-menu {
+    margin: 0;
+    padding: 0;
+    font: 10px Verdana, sans-serif;
+}
+
+.menu,
+.sub-menu {
+    list-style: none;
+    background: #000;
+}
+
+.sub-menu {
+    background: #F1F1F1;
+}
+
+.menu a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px;
+}
+
+.menu span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.menu div {
+    position: absolute;
+    right: 4px;
+    top: 0px;
+    padding: 8px;
+}
+
+.menu .menu_img {
+    vertical-align: middle;
+}
+
+.menu img {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: sub;
+    padding-left: 5px;
+}
+
+.menu li {
+    position: relative;
+}
+
+    .menu li:hover {
+        background: aquamarine;
+        cursor: pointer;
+    }
+
+.sub-menu li:hover {
+    background: aquamarine;
+}
+
+.menu li:hover > .sub-menu {
+    display: block;
+}
+
+.menu {
+    width: 150px;
+    position: absolute;
+    background: #F1F1F1;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    cursor: default;
+    box-shadow: 2px 2px 3px #BDBDBD;
+}
+
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 2px 2px 3px #BDBDBD;
+}
+
+.menu .sub-menu {
+    top: 0;
+    left: 100%;
+}
+
+/* Hight Charts */
+
+#container {
+    height: 420px;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 360px;
+    max-width: 820px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+.container-scroll {
+    min-width: 25em;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#gridContainer {
+    height: 620px;
+}
+
+.dx - datagrid - rowsview.dx - master - detail - row: not(.dx - datagrid - edit - form) > .dx - datagrid - group - space,
+.dx - datagrid - rowsview.dx - master - detail - row: not(.dx - datagrid - edit - form).dx - master - detail - cell {
+    background - color: transparent;
+}
+
+.form - container {
+    padding: 20px;
+}
+
+.address - form label {
+    font - weight: bold;
+}
+
+.bootstrap-select .dropdown-menu > li > a small.muted {
+    display: none;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: relative;
+    padding-left: 38px;
+}
+
+    .bootstrap-select .dropdown-toggle .filter-option:before {
+        content: "Size:";
+        font-size: 14px;
+        font-weight: 700;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }

@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Productos</h1>
+
+<input id="idEmpresa" value="@ViewBag.idEmpresa" style="display:none;"/>
+
+@(Html.DevExtreme().DataGrid<FactoryX.Models.Productos>().ID("dg_productos")
+    .DataSource(ds => ds.Mvc()
+        .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+        .Controller("Tablas")
+        .LoadAction("GetProductos")
+        .InsertAction("InsertProductos")
+        .Key("Cod_producto")
+        .UpdateAction("UpdateProductos").OnBeforeSend("asignaId") //.OnBeforeSend("function(actionName, e) { e.data.context = '" + ViewBag.idEmpresa + "'; }")
+        .DeleteAction("DeleteProductos")
+    )
+    .Editing(editing => editing
+                        .Mode(GridEditMode.Row)
+                        .AllowAdding(true)
+                        .AllowUpdating(true)
+                        .AllowDeleting(true)
+                        .UseIcons(true)
+                        .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                      )
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.Cod_producto).Width(150);
+
+        columns.AddFor(m => m.Des_producto);
+        
+        columns.AddFor(m => m.Cod_grupo).Width(150)
+        .Lookup(lookup => lookup
+            .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetAgrupacion").Key("Cod_grupo"))
+        .ValueExpr("Cod_grupo")
+        .DisplayExpr("Des_grupo")
+        );
+
+    })
+    .AllowColumnResizing(true)
+    .AllowColumnReordering(true)
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+)
+
+<br />
+<br />
+
+<hr style="color: #0056b2;" />
+
+<h1>Grupo de productos</h1>
+<a class="dx-button" onclick="ver_gruposProductos()"> &nbsp; Ver grupo de productos &nbsp; </a>
+
+<div id="grid_grupo" style="display:none;">
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Grupos>().ID("dg_grupo_productos")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Tablas")
+            .LoadAction("GetAgrupacion")
+            .InsertAction("InsertAgrupacion")
+            .Key("Cod_grupo")
+            .UpdateAction("UpdateAgrupacion")
+            .DeleteAction("DeleteAgrupacion")
+        )
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                            //.Texts(t => t.ConfirmDeleteTitle("Eliminar"))
+                          )
+        .Columns(columns =>
+         {
+             //columns.AddFor(m => m.Cod_grupo).Width(150);
+
+             columns.AddFor(m => m.Des_grupo);
+         })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))        
+    )
+</div>
+<script src="~/js/TablasPrincipales.js"></script>
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GetProductos = '@Html.Raw(Url.Action("GetProductos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+
+</script>

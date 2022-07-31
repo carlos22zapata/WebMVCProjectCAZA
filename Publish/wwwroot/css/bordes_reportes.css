@@ -1,0 +1,12 @@
+﻿
+.borde {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    /*box-shadow: 2px 0 0 0 black;*/
+    height: 124px;
+    margin: 0px;
+    width: 250px;
+    border-radius: 10px;       
+}

@@ -1,0 +1,468 @@
+﻿@model FactoryX.Models.MonitoreoModel
+
+
+@{
+    ViewData["Title"] = "Monitoreo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Control de procesos en tiempo real</h1>
+
+<br />
+<a class="btn btn-primary agregar" onclick="mostrarTablaActivos()" id="btnOM">
+    @*<i class="fas fa-cubes" > </i>*@
+    Ocultar tabla
+</a>
+
+
+@*<script src="https://code.highcharts.com/stock/highstock.js"></script>*@
+
+<script src="~/js/HighCharts/highstock.js" asp-append-version="true"></script>
+<script src="https://code.highcharts.com/modules/boost.js"></script>
+
+<div class="scroller" id="tb_activos">
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Activos_Vista>().ID("dg_activos")
+    .OnCellPrepared("cellPrepared")
+    .DataSource(ds => ds.Mvc()
+    .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+    .Controller("Monitoreo")
+    .LoadAction("GetDatosTabla1")
+    .Key("Iid")
+    .UpdateAction("UpdateSKU").UpdateMethod("PUT").OnBeforeSend("asignaId"))
+    .Editing(editing =>
+    {
+        editing.Mode(GridEditMode.Cell);
+        editing.AllowUpdating(true);
+    })
+    .ShowBorders(true)
+    .Selection(s => s.Mode(SelectionMode.Multiple))
+    .Columns(columns =>
+    {
+        columns.Add().Caption("Seleccionar")
+                    .Type(GridCommandColumnType.Selection)
+                    .Width(50);
+
+        columns.AddFor(m => m.Id).Visible(false).AllowEditing(false);
+
+        columns.AddFor(m => m.Cod_plan).Visible(false).AllowEditing(false);
+
+        columns.AddFor(m => m.SKU).Visible(false).AllowEditing(false);
+
+        columns.AddFor(m => m.Cod_activo).Caption("Código de \n activo").AllowEditing(false).Width(100);
+
+        columns.AddFor(m => m.Des_activo).Caption("Nombre activo").MinWidth(200).AllowEditing(false);
+
+        //columns.AddFor(m => m.Cod_grupo).Caption("Grupo").AllowEditing(false).Width(70);
+
+        columns.AddFor(m => m.Variable).Caption("Variable").AllowEditing(false).Width(70);
+
+        //columns.AddFor(m => m.Unidad).Caption("Unidad").AllowEditing(false).Width(70);
+
+        columns.AddFor(m => m.Valor_variable).Caption("Valor actual variable").AllowEditing(false).Width(70).Visible(false);
+
+        columns.AddFor(m => m.Tabla).Visible(false);
+
+        columns.AddFor(m => m.Estado_activo).Caption("Estado");
+
+        columns.Add().Caption("Plan, SKU")
+                .Type(GridCommandColumnType.Buttons)
+                .Width(110)
+                .Buttons(b =>
+                {
+
+                            b.Add()
+                            .Hint("Asigna plan y SKU")
+                            .Icon("fas fa-file-signature")
+                            .OnClick(@<text>muestraCambiaSKU</text>);
+
+                });
+
+        columns.Add().Caption("Opciones")
+                .Type(GridCommandColumnType.Buttons)
+                .Width(110)
+                .Buttons(b =>
+                {
+
+                b.Add()
+                    .Hint("Ingreso paro máquina")
+                    .Icon("fas fa-tools")
+                    .OnClick(@<text>abrirModalSKU</text>);
+
+                            b.Add()
+                            .Hint("Cambio de datos historicos del día")
+                            .Icon("fas fa-history")
+                            .OnClick(@<text>abrirModalHistoricosSKU</text>);
+
+                            b.Add()
+                            .Hint("Finalizar orden de producción")
+                            .Icon("far fa-hand-paper")
+                            .OnClick(@<text>muestraCerrarOP</text>);
+                });
+
+        columns.AddFor(m => m.Cod_incidencia).Visible(false);
+
+    })
+            .AllowColumnResizing(true)
+            .AllowColumnReordering(true)
+            .FilterRow(filterRow => filterRow.Visible(true))
+            .GroupPanel(groupPanel => groupPanel.Visible(true))
+            .OnSelectionChanged("selection_changed")
+        //.OnKeyDown("on_row_click")
+
+        )
+</div>
+
+<br />
+<br />
+
+@*<div class="dx-field">
+        <div class="dx-field-label">Image as the icon</div>
+        <div class="dx-field-value">
+            <div id="custom-icon"></div>
+        </div>
+    </div>*@
+
+<div class="">
+    <div class="container-scroll" id="dv_tablas"></div>
+</div>
+<br />
+<div class="scroller">
+    <div class="flex-row" id="dv_tablas1"></div>
+</div>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<div id="container_monitor" style="margin: 0 auto">
+
+</div>
+
+
+@**Modal de ingreso de Paro *@
+<div class="scroller">
+    @*<form class="modal fade" id="modalSKU_Historico" role="dialog">*@
+    <form class="modal fade" id="modalSKU" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title " style="display: block;">Paro de maquinas </h4> <br />
+
+                </div>
+
+                <div class="modal-body" style="display: block;">
+                    <h6 class="modal-title " id="titulo" style="display: block;"></h6>
+                    <br />
+
+                    <div class="row form-group">
+                        <label class="col-md-4 control-label">Tipo de paro</label>
+                        <div class="col-md-8">
+                            @Html.DropDownList("CB_TipoParo", new SelectList(Model.Tipos_incidencia, "Cod_tipo", "Des_tipo"), "-- Seleccione una tipo de paro --")
+                        </div>
+
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="col-md-4 control-label">Hora inicio de paro</label>
+                        <div class="col-md-8">
+                            @Html.DropDownList("CB_HoraParo", new SelectList(string.Empty, "Value", "Text"), "-- Seleccione una hora de paro --")
+
+                            @*@(Html.DevExtreme().SelectBox()
+                                    .ID("CB_HoraParoX")
+                                    .Placeholder("Todos los SKU")
+                                    .DataSource(d => d.Mvc().LoadAction("Lista_sku")
+                                                            .Key("Cod_producto")
+                                                            .Controller("Monitoreo")
+                                                            .LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+                                    .DisplayExpr("Des_producto")
+                                    .ValueExpr("Cod_producto")
+                                    .SearchEnabled(true)
+                                )*@
+                        </div>
+
+                    </div>
+
+                    <input type="text" placeholder="Introduzca aquí una observación" id="txt_observacion" />
+
+                    <br />
+                    <br />
+
+                    <div>
+                        <button type="button" class="btn btn-outline-success" onclick="guardaParo()" id="btn_guardaParo" style="width:100%;">Guardar registro de paro</button>
+                    </div>
+
+                    <input type="text" id="Lab_activo" style="display:none;" />
+                    <input type="text" id="Lab_variable" style="display:none;" />
+                    <input type="text" id="Lab_id" style="display:none;" />
+                    <input type="text" id="Lab_tabla" style="display:none;" />
+                    <input type="text" id="Lab_idIncidencia" style="display:none;" />
+                </div>
+
+                <div class="modal-footer sin">
+                    @*<button type="button" class="btn btn-outline-primary" onclick="enviaCorreo()"><i class="fas fa-history"></i> Cambio de historico</button>*@
+                    @*<button type="button" class="btn btn-outline-primary" onclick="verWarningSku('s')"><i class="fas fa-history"></i> Cambio de historico de SKU</button>*@
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cancelar</button>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+@**Modal de modificar SKU Historicos*@
+<div class="scroller">
+    <form class="modal fade" id="modalSKU_Historico" data-backdrop="static" data-keyboard="false" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title " style="display: block;">Modificar historicos de SKU</h4> <br />
+
+                </div>
+
+                <div class="modal-body" style="display: block;">
+                    <h6 class="modal-title " id="titulo2" style="display: block;"></h6>
+                    <br />
+
+                    <div class="alert alert-dismissible alert-warning" id="warning_sku">
+
+                        <div id="contenido1" style="display:none;">
+                            <strong>IMPORTANTE</strong> <br />
+                            <a>
+                                Para modificar estos datos se enviará un código al correo del supervisor registrado en el sistema,
+                                de esta manera se podrán guardar los cambios.
+                            </a> <br />
+
+                            @*<button type="button" onclick="" class="btn btn-warning" data-dismiss="modal">Confirmar eliminación</button>*@
+                        </div>
+
+                        <div id="contenido2">
+
+                            <div style="text-align:justify;">
+                                <strong>Seleccione la fecha desde y hasta, opcionalmente tambien puede asociar un SKU y un código relacionado a la orden de producción. Una vez hecho presione el botón Enviar a aprobación</strong>
+                            </div>
+
+                            <br />
+
+                            <div class="row form-group">
+                                <label class="col-md-4 control-label">Hora inicio</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("CB_HoraCambio_D", new SelectList(string.Empty, "Value", "Text"), "Seleccione una hora de inicio --")
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-md-4 control-label">Hora fin</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("CB_HoraCambio_H", new SelectList(string.Empty, "Value", "Text"), "Seleccione una hora de fin --")
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-md-4 control-label">Sku</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("CB_SKU_", new SelectList(Model.ListaSKU_, "Cod_producto", "Des_producto"), "-- Seleccione un SKU --")
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-md-4 control-label">Código O. Pruducción</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("CB_OP_", new SelectList(Model.ListaPedidos_, "Cod_plan", "Cod_plan"), "-- Opcional OP --")
+                                </div>
+                            </div>
+
+                            <br />
+                            <button type="button" id="btn_aprobacion" onclick="apruebaHistoricos()" class="btn btn-outline-warning" style="width:100%;">Enviar a aprobación</button>
+
+
+                            <input type="text" id="aprobacion" placeholder="Introduzca el número de aprobación" />
+                            <br />
+                            <button type="button" class="btn btn-warning" onclick="guardaHistoricos()" data-dismiss="modal" id="btn_aceptar1" style="width:100%;">Aceptar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <input type="text" id="Lab_tabla2" style="display:none;" />
+                <input type="text" id="Lab_id2" style="display:none;" />
+                <input type="text" id="Lab_activo3" style="display:none;" />
+
+                <div class="modal-footer sin">
+                    @*<button type="button" class="btn btn-outline-primary" onclick="enviaCorreo()"><i class="fas fa-history"></i> Cambio de historico</button>*@
+                    @*<button type="button" class="btn btn-outline-primary" onclick=""><i class="fas fa-history"></i>Guardar cambios</button>*@
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@**Modal de cambio de plan y SKU*@
+<div class="scroller">
+    <form class="modal fade" id="modalPlan_SKU" data-backdrop="static" data-keyboard="false" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title " style="display: block;">Asignar plan de producción y SKU</h4> <br />
+                </div>
+
+                <div class="modal-body" style="display: block;">
+                    <h6 class="modal-title " id="titulo2" style="display: block;"></h6>
+                    <br />
+
+                    <div class="alert alert-dismissible alert-warning" id="warning_sku">
+
+                        <div class="row">
+                            @*<label>Activo:</label>*@
+                            <label id="lab_planes_activos"></label>
+                        </div>
+
+                        <br />
+
+                        <div id="contenedor1">
+                            <div class="">
+                                <label>Plan de producción y SKU</label>
+                                <div id="planesActivos"> </div>
+                            </div>
+
+                            @*<br />
+
+                                <div class="">
+                                    <label>Sku del plan</label>
+                                    <div id="productosPlanesActivos"></div>
+                                </div>*@
+
+                        </div>
+
+                        <div id="contenido2">
+                            <br />
+                            <button type="button" class="btn btn-outline-success" onclick="desacoplaOrden()" data-dismiss="modal" id="btn_aceptar1" style="width:100%;">Desacoplar orden y SKU</button>
+                            <br /><br />
+                            <button type="button" class="btn btn-warning" onclick="establecePlanSku()" data-dismiss="modal" id="btn_aceptar1" style="width:100%;">Aplicar cambios</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <input type="text" id="Lab_cod_activoSKU" style="display:none;" />
+                <input type="text" id="idSKU" style="display:none;" />
+                <input type="text" id="Lab_cod_plan" style="display:none;" />
+                <input type="text" id="Lab_SKUX" style="display:none;" />
+
+                <div class="modal-footer sin">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+@*<a class="btn btn-warning editar espacio" id="editarH" data-toggle="modal" data-target="#myModal">
+        <i class="fas fa-edit"></i> Editar
+    </a>
+
+    <button type="button" class="btn btn-info btn-lg" id="myBtn" onclick="abrirModalPrueba()">Open Modal</button>*@
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Cerrar Orden de producción *@
+<form class="modal fade" id="modalCerrarOP" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title " style="display: block;">Cerrar orden de producción</h4> <br />
+
+            </div>
+
+            <div class="modal-body" style="display: block;">
+                <h6 class="modal-title " id="titulo2" style="display: block;"></h6>
+                <br />
+
+                <div class="alert alert-dismissible alert-warning" id="warning_sku">
+
+                    <div id="contenido1">
+                        <strong>INFORMATIVO</strong> <br />
+                        <a>
+                            Para cerrar la orden de producción presione en cerrar orden. Asegurese que su respuesta es correcta.
+                        </a> <br />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-12" style="font-weight:400; color:dimgray;">
+                <input type="text" id="Lab_id3" style="display:none;" />
+                <a id="Lab_orden"></a> <br />
+                <a id="Lab_produ"></a> <br />
+            </div>
+            <br />
+
+            <div class="modal-footer sin">
+                <button type="button" class="btn btn-outline-primary" onclick="cerrarOP()"><i class="fas fa-cubes"></i>Cerrar orden</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.graficoTR             = '@Html.Raw(Url.Action("GraficoTR","Monitoreo",  new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.graficoTR2            = '@Html.Raw(Url.Action("GraficoTR2","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.asignaSKU             = '@Html.Raw(Url.Action("asignaSKU","Monitoreo",  new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.enviaCorreo           = '@Html.Raw(Url.Action("enviaCorreo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.enviaTelegram         = '@Html.Raw(Url.Action("enviaTelegram","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.UpdateSKU             = '@Html.Raw(Url.Action("UpdateSKU","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ValidaCorreo          = '@Html.Raw(Url.Action("ValidaCorreo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ValidaCodigo          = '@Html.Raw(Url.Action("ValidaCodigo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaEmpresa         = '@Html.Raw(Url.Action("AsignaEmpresa","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.CargaHoras            = '@Html.Raw(Url.Action("CargaHoras","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GuardaParo            = '@Html.Raw(Url.Action("GuardaParo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.IncidenciasActivas    = '@Html.Raw(Url.Action("IncidenciasActivas","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.CierreParo            = '@Html.Raw(Url.Action("CierreParo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.CerrarOP              = '@Html.Raw(Url.Action("CerrarOP","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ActualizaHistoricos   = '@Html.Raw(Url.Action("ActualizaHistoricos","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.CreaCodigo            = '@Html.Raw(Url.Action("CreaCodigo","Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.InformacionOP         = '@Html.Raw(Url.Action("InformacionOP", "Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.CargaPlan             = '@Html.Raw(Url.Action("CargaPlan", "Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.DesacoplaOrden        = '@Html.Raw(Url.Action("DesacoplaOrden", "Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ActualizaSKU          = '@Html.Raw(Url.Action("ActualizaSKU", "Monitoreo", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+</script>
+<script src="~/js/OrdenarFilasTabla.js" asp-append-version="true"></script>
+<script src="~/js/csvOptions.js" asp-append-version="true"></script>
+<script src="~/js/Monitoreo.js" asp-append-version="true"></script>
+
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+@*<script src="https://code.highcharts.com/modules/export-data"></script>*@
+

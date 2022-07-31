@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Capacidades de activos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Capacidades de activos</h1>
+
+<div class="scroller" id="tb_CapacidadesActivos">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Capacidades_activos>().ID("dg_Capacidades_activos")
+        .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("Tablas")
+            .LoadAction("GetCapacidades_activos")
+            .InsertAction("InsertCapacidades_activos")
+            .UpdateAction("UpdateCapacidades_activos")
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .DeleteAction("DeleteCapacidades_activos")
+            .Key("Cod_activo", "Cod_producto")
+            .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                          )
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.Cod_activo).Caption("Activo")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetActivos").Key("Cod_activo").LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+            
+            .ValueExpr("Cod_activo")
+            .DisplayExpr("Cod_activo")
+            );
+            
+            columns.AddFor(m => m.Cod_producto).Caption("SKU")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetProductos").Key("Cod_producto").LoadParams(new { idEmpresa = ViewBag.idEmpresa }))            
+            .ValueExpr("Cod_producto")
+            .DisplayExpr("Cod_producto")
+            );
+            
+            columns.AddFor(m => m.Capacidad_maxima).MinWidth(200).Caption("Capacidad nominal");
+
+            columns.AddFor(m => m.Unidad).Caption("Unidad")
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetUnidades").Key("Cod_unidad").LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+            
+            .ValueExpr("Cod_unidad")
+            .DisplayExpr("Cod_unidad")
+            );
+
+            columns.AddFor(m => m.UnidadesXciclo).MinWidth(200).Caption("Unidades de conversión");
+
+            columns.AddFor(m => m.Variable).Caption("Variable")
+                    .Lookup(lookup => lookup
+                        .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetVariable").Key("variable").LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+                    .ValueExpr("variable")
+                    .DisplayExpr("variable")
+            );
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    )
+
+</div>
+
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    //FactoryX.Urls.AsignaEmpresa      = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    //FactoryX.Urls.AsignaHora         = '@Html.Raw(Url.Action("AsignaHora","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    //FactoryX.Urls.GuardaHorasActivos = '@Html.Raw(Url.Action("GuardaHorasActivos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+</script>
+
+
+<script src="~/js/TablasPrincipales.js"></script>

@@ -1,0 +1,299 @@
+﻿
+@{
+    ViewData["Title"] = "Activos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Activos</h1>
+
+<div class="scroller" id="tb_activos">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.ActivosLista>().ID("dg_Activos2")
+        .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("Tablas")
+            .LoadAction("GetActivos")
+            .InsertAction("InsertActivos")
+            .UpdateAction("UpdateActivos")
+            .DeleteAction("DeleteActivos")
+            .Key("Cod_activo")
+            .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                          )
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.Cod_activo).Width(150);
+
+            columns.AddFor(m => m.Des_activo).MinWidth(200);
+
+            columns.AddFor(m => m.Cod_grupo).Width(150)
+            .Lookup(lookup => lookup
+                .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetAgrupacionActivos").Key("Cod_grupo"))
+            .ValueExpr("Cod_grupo")
+            .DisplayExpr("Des_grupo")
+            );
+
+            columns.Add().Caption("Opciones")
+                    .Type(GridCommandColumnType.Buttons)
+                    .Width(110)
+                    .Buttons(b =>
+                            {
+
+                        b.Add().Name(GridColumnButtonName.Edit).Hint("Editar activo");
+                        b.Add().Name(GridColumnButtonName.Delete).Hint("Borrar activo");
+
+                        b.Add()
+                        .Hint("Definir horarios de activo")
+                        .Icon("fas fa-calendar-alt")
+                        .OnClick(@<text>abrirmodalHorariosActivos</text>);
+        });
+
+        })
+        //.MasterDetail(m => m
+        //    .Enabled(true)
+        //    .Template(new TemplateName("grid-detalle"))
+        //)
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    )
+
+    @*@using (Html.DevExtreme().NamedTemplate("grid-detalle"))
+        {
+            @(Html.DevExtreme().TabPanel()
+                .Items(items =>
+                        {
+                    items.Add()
+                        .Title("Horario")
+                        .Template(new TemplateName("gridContainer-details-tab1Template"))
+                        .Option("tabExtras", new { cod_activo = new JS("data.Cod_activo") });
+
+                })
+            )
+        }*@
+
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("gridContainer-details-tab1Template"))
+{
+    var formItemTemplate = "<%- editorOptions.value %>";
+
+    @(Html.DevExtreme().Form()
+        .ElementAttr("class", "form-container")
+        .FormData(new JS("tabExtras"))
+        .LabelLocation(FormLabelLocation.Top)
+        .Items(items =>
+        {
+                items.AddSimple().DataField("id").Template(formItemTemplate);
+
+
+        })
+    )
+}
+
+
+<br />
+<br />
+
+<hr style="color: #0056b2;" />
+
+<h1>Grupo de activos</h1>
+<a class="dx-button" onclick="ver_gruposActivos()"> &nbsp; Ver grupo de productos &nbsp; </a>
+
+<div id="grid_grupoActivos" style="display:none;">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Grupos_activos>().ID("dg_grupoA")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Tablas")
+            .LoadAction("GetAgrupacionActivos")
+            .InsertAction("InsertAgrupacionActivos")
+            .Key("Cod_grupo")
+            .UpdateAction("UpdateAgrupacionActivos")
+            .DeleteAction("DeleteAgrupacionActivos")
+            .OnBeforeSend("asignaId")
+        )
+        .ShowBorders(true)
+        .Editing(editing => editing
+                            .Mode(GridEditMode.Row)
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(true)
+                            .UseIcons(true)
+                            .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                            //.Texts(t => t.ConfirmDeleteTitle("Eliminar"))
+                          )
+        .Columns(columns =>
+         {
+             //columns.AddFor(m => m.Cod_grupo).Width(150).Visible(false).SetCellValue("0");
+
+             columns.AddFor(m => m.Des_grupo);
+
+             columns.Add().Caption("Opciones")
+                    .Type(GridCommandColumnType.Buttons)
+                    .Width(110)
+                    .Buttons(b =>
+                            {
+
+                        b.Add().Name(GridColumnButtonName.Edit).Hint("Editar activo");
+                        b.Add().Name(GridColumnButtonName.Delete).Hint("Borrar activo");
+
+                        @*b.Add()
+                        .Hint("Definir horarios de activo")
+                        .Icon("fas fa-calendar-alt")
+                        .OnClick(@<text>abrirmodalHorariosGrupos</text>);*@
+});
+})
+.AllowColumnResizing(true)
+.AllowColumnReordering(true)
+.FilterRow(filterRow => filterRow.Visible(true))
+    )
+
+</div>
+
+@* Modal para incluir los horarios *@
+<form class="modal fade" id="modalHorariosActivos" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title step-1 sin-padding" data-step="1" style="display: block;">Horarios del activo</h5>
+            </div>
+
+            <div class="modal-body" style="display: block;">
+                <div class="row">
+                    &nbsp;&nbsp; &nbsp;&nbsp;
+                    <h6 class="modal-title " id="Lab_Cod_activo"></h6>
+                    &nbsp;&nbsp;
+                    <h6 class="modal-title " id="Lab_Des_activo"></h6>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="dx-field">
+                        <div>
+
+                            <div class="form-group">
+
+                                @(Html.DevExtreme().DataGrid<FactoryX.Models.Turnos_activos>().ID("dg_TurnosActivos")
+                                .DataSource(ds => ds.Mvc()
+                                    .Controller("Tablas")
+                                    .LoadAction("GetTurnosActivos")
+                                    .InsertAction("InsertTurnosActivos")
+                                    .Key("Cod_activo", "Cod_turno", "Dia")
+                                    //.UpdateAction("UpdateTurnosActivos")
+                                    .DeleteAction("DeleteTurnosActivos")
+                                    .OnBeforeSend("asignaId")
+                                    .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                                )
+                                .ShowBorders(true)
+                                .Editing(editing => editing
+                                                    .Mode(GridEditMode.Row)
+                                                    .AllowAdding(true)
+                                                    //.AllowUpdating(true)
+                                                    .AllowDeleting(true)
+                                                    .UseIcons(true)
+                                                    .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                                                    //.Texts(t => t.ConfirmDeleteTitle("Eliminar"))
+                                                  )
+                                .Columns(columns =>
+                                 {
+                                     //columns.AddFor(m => m.Cod_grupo).Width(150);
+                                     columns.AddFor(m => m.Cod_activo).Caption("Activo").Visible(false);
+
+                                     //columns.AddFor(m => m.Dia).Caption("Día");
+
+                                     columns.AddFor(m => m.Dia).Caption("Día")
+                                     .Lookup(l => l.DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetDias").Key("Cod_dia"))
+                                     .ValueExpr("Cod_dia").DisplayExpr("Des_dia"));
+
+                                     columns.AddFor(m => m.Cod_turno).Caption("Turno")
+                                     .Lookup(l => l.DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetTurnos1").Key("Cod_turno"))
+                                     .ValueExpr("Cod_turno").DisplayExpr("Cod_turno"));
+                                 })
+                                .AllowColumnResizing(true)
+                                .AllowColumnReordering(true)
+                                .FilterRow(filterRow => filterRow.Visible(true))
+                                )
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+
+            <input type="text" id="Lab_id3" style="display:none;" />
+
+            <div class="modal-footer sin">
+                @*<button type="button" class="btn btn-outline-success" onclick="guardaHorasActivos()"><i class="fas fa-cubes"></i>Guardar</button>*@
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Salir</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@* Modal para incluir los horarios por grupo *@
+<form class="modal fade" id="modalHorariosGrupos" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title step-1 sin-padding" data-step="1" style="display: block;">Asigna horarios a un grupo de activos</h5>
+            </div>
+
+            <div class="modal-body" style="display: block;">
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;
+                    <h6 class="modal-title " id="Lab_Des_grupo"></h6>
+                </div>
+
+                <br />
+
+                <div class="row">
+                    
+                </div>
+
+            </div>
+
+            <br />
+
+            <input type="text" id="Lab_id3" style="display:none;" />
+
+            <div class="modal-footer sin">
+                @*<button type="button" class="btn btn-outline-success" onclick="guardaHorasActivos()"><i class="fas fa-cubes"></i>Guardar</button>*@
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Salir</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa      = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaHora         = '@Html.Raw(Url.Action("AsignaHora","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GuardaHorasActivos = '@Html.Raw(Url.Action("GuardaHorasActivos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaCod_activo   = '@Html.Raw(Url.Action("AsignaCod_activo","Tablas"))';
+
+</script>
+
+<script src="~/js/TablasPrincipales.js"></script>
+<script src="~/js/multi-step-modal.js"></script>

@@ -1,0 +1,36 @@
+﻿.wrapper {
+    background: #EFEFEF;
+    box-shadow: 1px 1px 10px #999;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px !important;
+    width: 96%;
+    padding-top: 5px;
+}
+
+.scroller {
+    overflow-x: scroll;
+    overflow-y: auto;
+    /*height: 180px;*/
+    white-space: nowrap;
+}
+
+.chartWrapper {
+    position: relative;
+}
+
+    .chartWrapper > canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+    }
+
+.chartAreaWrapper {
+    width: 600px;
+    overflow-x: scroll;
+}

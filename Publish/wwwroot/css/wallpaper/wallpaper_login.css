@@ -1,0 +1,93 @@
+html,body{
+    height:100%;
+    width:100%;
+}
+#videoBG {
+    display: block;
+    position: fixed;
+  width:100%;
+    min-width: 100%;
+    z-index: -1;
+}
+
+@media (max-width: 575px) {
+    #videoBG {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/particles.jpg');
+        background-size: cover;
+        background-repeat:no-repeat;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    #videoBG {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/particles.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    #videoBG {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/particles.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    
+}
+
+/*  Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+    #videoBG {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/particles.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    #videoBG {
+        display: block;
+        width:100%;
+        position: fixed;
+       
+        min-width: 100%;
+        z-index: -1;
+    }
+}
+
+/*  Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    #videoBG {
+        
+        display: block;
+        position: fixed;
+      
+        min-width: 100%;
+        z-index: -1;
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,536 @@
+﻿@{
+    ViewData["Title"] = "Análisis de tiempos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<script src="~/js/JSCalendar/jquery.js"></script>*@
+
+<h1>Análisis de tiempos</h1>
+
+<h1 id="Etiqueta_maquina"></h1>
+<input id="idEmpresa" value="@ViewBag.idEmpresa" style="display:none;" />
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+@* JSCalendar *@
+
+<link href="~/css/JSCalendar/datepicker.css" rel="stylesheet" />
+<link href="~/css/GestionKPI_tiempos.css" rel="stylesheet" asp-append-version="true" />
+@*<link href="~/css/JSCalendar/layout.css" rel="stylesheet" />*@
+<script src="~/js/JSCalendar/datepicker.js"></script>
+<script src="~/js/JSCalendar/eye.js"></script>
+<script src="~/js/JSCalendar/layout.js"></script>
+@*<script src="~/js/JSCalendar/jq2.js"></script>*@
+
+<div>
+
+    <div class="alert alert-success" role="alert" id="alertaInicial">
+        Datos obtenidos de la última semana completa de trabajo...
+    </div>
+
+    <button class="btn btn-primary agregar col-xl-1" onclick="mostrarFiltroMes()" id="btnMes">
+        @*<i class="fas fa-cubes" > </i>*@
+        Mes
+    </button>
+    <button class="btn btn-primary agregar col-xl-1" onclick="mostrarFiltroSemana()" id="btnSemana">
+        @*<i class="fas fa-cubes" > </i>*@
+        Semana
+    </button>
+    <button class="btn btn-primary agregar col-xl-1" onclick="mostrarFiltroDia()" id="btnDia">
+        @*<i class="fas fa-cubes" > </i>*@
+        Día
+    </button>
+    <button class="btn btn-primary agregar col-xl-1" onclick="mostrarFiltroHora()" id="btnHora">
+        @*<i class="fas fa-cubes" > </i>*@
+        Hora
+    </button>
+    <label class="col-xl-1" value="" id="txt_tb0" style="display:none;">0</label>
+
+    <div class="row" style="float:right;">
+
+        &nbsp;
+        &nbsp;
+
+        <div class="">Filtrado inteligente de datos</div>
+
+        &nbsp;
+
+        <div>
+            @(Html.DevExtreme().Switch()
+                    .Value(false)
+                    .ID("swich01")
+                    .OnValueChanged("switch_valueChanged")
+                )
+        </div>
+    </div>
+
+</div>
+
+<br />
+<br />
+
+<div class="container-fluid" id="mesFilter" style="cursor:pointer; display:none;">
+    <div class="container">
+        <div class="row">
+            <span class="input-group-text col-xl-1">Máquina</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    //.ID("select-prefix")
+                    .ID("mesMaquina")
+                    //.DataSource(new[] { "ACT_1", "ACT_2", "ACT_3", "ACT_4", "ACT_5", "ACT_6" })
+                    .DataSource(d => d.Mvc().
+                        LoadAction("Lista_activos").
+                        LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+                    .Placeholder("Seleccione")
+                    .DisplayExpr("Des_activo")
+                    //.Width(225)
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                .SearchEnabled(true)
+                //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+
+            <button class="btn btn-outline-info" id="btn_tbl01" onclick="tbl_consolidado('btn_tbl01')">Ver tabla consolidado de maquinas</button>
+
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">  &nbsp;&nbsp; Desde</span>
+            <div class="col-xl-3">
+                @*@(Html.DevExtreme().DateBox()
+                .ID("mesDesde")
+                .Type(DateBoxType.Date)
+                .Value(DateTime.Now)
+                .DisplayFormat("monthAndYear")
+                .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                    )*@
+                <input type="month" name="week" id="mes-ini" required class="datePicker-CAZA">
+            </div>
+            <span class="input-group-text col-xl-1"> &nbsp;&nbsp; Hasta</span>
+            <div class="col-xl-3">
+                @*@(Html.DevExtreme().DateBox()
+                .ID("mesHasta")
+                .Type(DateBoxType.Date)
+                .Value(DateTime.Now)
+                .DisplayFormat("monthAndYear")
+                .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                    )*@
+                <input type="month" name="week" id="mes-fin" required class="datePicker-CAZA">
+            </div>
+            <button class="botoncito4 col-xl-1 btn btn-info agregar" onclick="obtenerMes(@ViewBag.idEmpresa)" id="prueba">
+                @*<i class="fas fa-cubes" > </i>*@
+                Aplicar
+            </button>
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Ver en</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("mesVer")
+                    .DataSource(new[] { "Minutos", "Horas" })
+                    .Placeholder("Minutos")
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="semanaFilter" style="cursor:pointer; display:none;">
+    <div class="container">
+
+        <div class="row">
+            <span class="input-group-text col-xl-1">Máquina</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    //.ID("select-prefix")
+                    .ID("semanaMaquina")
+                    .DataSource(d => d.Mvc().
+                        LoadParams(new { idEmpresa = ViewBag.idEmpresa }).
+                        LoadAction("Lista_activos"))
+                    .Placeholder("Seleccione")
+                    .DisplayExpr("Des_activo")
+                    //.Width(225)
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+            </div>
+
+            <button class="btn btn-outline-info" id="btn_tbl02" onclick="tbl_consolidado('btn_tbl02')">Ver tabla consolidado de maquinas</button>
+
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">  &nbsp;&nbsp; Desde</span>
+            <div class="col-xl-3">
+                <input type="week" name="week" id="semana-ini" required class="datePicker-CAZA">
+            </div>
+            <span class="input-group-text col-xl-1"> &nbsp;&nbsp; Hasta</span>
+            <div class="col-xl-3">
+                <input type="week" name="week" id="semana-fin" required class="datePicker-CAZA">
+            </div>
+            <button class="botoncito4 col-xl-1 btn btn-info agregar" onclick="obtenerSemana(@ViewBag.idEmpresa)" id="prueba">
+                Aplicar
+            </button>
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Ver en</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("semanaVer")
+                    .DataSource(new[] { "Minutos", "Horas" })
+                    .Placeholder("Minutos")
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="diaFilter" style="cursor:pointer; display:none;">
+    <div class="container">
+        <div class="row">
+            <span class="input-group-text col-xl-1">Máquina</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    //.ID("select-prefix")
+                    .ID("diaMaquina")
+                    .DataSource(d => d.Mvc().
+                        LoadParams(new { idEmpresa = ViewBag.idEmpresa }).
+                        LoadAction("Lista_activos"))
+                    .Placeholder("Seleccione")
+                    .DisplayExpr("Des_activo")
+                    //.Width(225)
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+
+            <button class="btn btn-outline-info" id="btn_tbl03" onclick="tbl_consolidado('btn_tbl03')">Ver tabla consolidado de maquinas</button>
+
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Desde</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("diaDesde")
+                    .Type(DateBoxType.Date)
+                    .DisplayFormat("dd/MM/yyyy")
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Hasta</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("diaHasta")
+                    .Type(DateBoxType.Date)
+                    .DisplayFormat("dd/MM/yyyy")
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Turno</span>
+            <div class="col-xl-2">
+                @(Html.DevExtreme().SelectBox()
+                    //.ID("select-prefix")
+                    .ID("diaTurno")
+                    .DataSource(d => d.Mvc().LoadAction("GetTurnos2")
+                                            .Key("Cod_turno")
+                                            .Controller("Tablas")
+                                            .LoadParams(new { idEmpresa = ViewBag.idEmpresa }))
+                    .Placeholder("Todos")
+                    //.Width(225)
+                    .DisplayExpr("Cod_turno")
+                    .ValueExpr("Cod_turno")
+                    .SearchEnabled(true)
+                    .DropDownButtonTemplate(@<i class="far fa-clock-o"></i>)
+                )
+            </div>
+            <button class="botoncito4 col-xl-1 btn btn-info agregar" onclick="obtenerDia(@ViewBag.idEmpresa)" id="prueba">
+                @*<i class="fas fa-cubes" > </i>*@
+                Aplicar
+            </button>
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Ver en</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("diaVer")
+                    .DataSource(new[] { "Minutos", "Horas" })
+                    .Placeholder("Minutos")
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="horaFilter" style="cursor:pointer; display:none;">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-xl-1">Desde</div>*@
+            <span class="input-group-text col-xl-1">Máquina</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    //.ID("select-prefix")
+                    .ID("horaMaquina")
+                    .DataSource(d => d.Mvc().
+                        LoadParams(new { idEmpresa = ViewBag.idEmpresa }).
+                        LoadAction("Lista_activos"))
+                    .Placeholder("Seleccione")
+                    .DisplayExpr("Des_activo")
+                    //.Width(225)
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+            </div>
+
+            <button class="btn btn-outline-info" id="btn_tbl04" onclick="tbl_consolidado('btn_tbl04')">Ver tabla consolidado de maquinas</button>
+
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Desde</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("horaDesde")
+                    .Type(DateBoxType.DateTime)
+                    .DisplayFormat("dd/MM/yyyy HH:mm")
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            @*<div class="col-xl-1">Hasta</div>*@
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Hasta</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("horaHasta")
+                    .Type(DateBoxType.DateTime)
+                    .DisplayFormat("dd/MM/yyyy HH:mm")
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            <button class="botoncito4 col-xl-1 btn btn-info agregar" onclick="obtenerHora(@ViewBag.idEmpresa)" id="prueba">
+                @*<i class="fas fa-cubes" > </i>*@
+                Aplicar
+            </button>
+        </div>
+        <br />
+        <div class="row">
+            <span class="input-group-text col-xl-1">&nbsp;&nbsp;Ver en</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().SelectBox()
+                    .ID("horaVer")
+                    .DataSource(new[] { "Minutos", "Horas" })
+                    .Placeholder("Minutos")
+                    .DropDownButtonTemplate(@<i class="fas fa-cog"></i>)
+                    .SearchEnabled(true)
+                    //.OnValueChanged("selectBox_valueChanged")
+                )
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+@*<h2 align="center" id="Etiqueta_maquina"></h2>*@
+<div id="div_general01">
+    <div id="dash">
+
+        <div class="row" id="dashbord1">
+
+            @*<div id="progresBar" style="">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Calculando valores...</span>
+                    </div>
+                    <a>&nbsp; Calculando valores...</a>
+                    <br />
+                </div>*@
+
+            <div class="col-xl-6">
+
+                <div id="progresBar1" style="display:none;">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Calculando valores...</span>
+                    </div>
+                    <a>&nbsp; Calculando valores...</a>
+                    <br />
+                </div>
+
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                </figure>
+            </div>
+            <div class="col-xl-6">
+
+                <div id="progresBar2" style="display:none;">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Calculando valores...</span>
+                    </div>
+                    <a>&nbsp; Calculando valores...</a>
+                    <br />
+                </div>
+
+                <figure class="highcharts-figure">
+                    <div id="container1"></div>
+                </figure>
+            </div>
+        </div>
+        <br />
+
+        <div id="noHayDatos" class="col-xl-12" style=" display: none inline-block; text-align:center;">
+            <h2 style="color:#a8a8a8; ">No hay datos de paros que mostrar</h2>
+        </div>
+
+        @*<span id="swc2">TIEMPOS</span>*@
+        <div class="row" id="dashbord2">
+
+            <div class="col-xl-6">
+
+                <div id="progresBar3" style="display:none;">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Calculando valores...</span>
+                    </div>
+                    <a>&nbsp; Calculando valores...</a>
+                    <br />
+                </div>
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                </figure>
+            </div>
+            <div class="col-xl-6">
+
+                <div id="progresBar4" style="display:none;">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="sr-only">Calculando valores...</span>
+                    </div>
+                    <a>&nbsp; Calculando valores...</a>
+                    <br />
+                </div>
+
+                <figure class="highcharts-figure">
+                    <div id="container3"></div>
+                </figure>
+            </div>
+        </div>
+        <br />
+        @*<span id="swc3">INDICADORES</span>
+            <div class="row" id="dashbord3">
+
+                <div class="col-xl-6">
+                    <figure class="highcharts-figure">
+                        <div id="3container"></div>
+                    </figure>
+                </div>
+                <div class="col-xl-6">
+                    <figure class="highcharts-figure">
+                        <div id="3container1"></div>
+                    </figure>
+                </div>
+            </div>
+            <br />*@
+    </div>
+
+    <button class="btn btn-primary agregar col-xl-4" onclick="mostrarTabla()" id="MOTabla">
+        @*<button class="btn btn-primary agregar" onclick="creaTabla()" id="btnMes">*@
+        @*<i class="fas fa-cubes"> </i>*@
+        Mostrar información en formato tabla
+    </button>
+    <button style="visibility: hidden" class="btn btn-primary agregar col-xl-2" onclick="mostrarTablaTodo()" id="MOTablaTodo">
+        @*<button class="btn btn-primary agregar" onclick="creaTabla()" id="btnMes">*@
+        @*<i class="fas fa-cubes"> </i>*@
+        Mostrar todo
+    </button>
+
+    @*<div style="padding: 10px;">
+            <div id="widget"></div>
+        </div>*@
+
+<div id="divTabla" style="padding: 10px; display:none;">
+    <br />
+    <div class="row">
+        <div class="col-xl-12">
+            <div>Análisis de tiempos</div>
+            <div id="tablaRegistros1"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xl-12">
+            <div>Análisis de tiempos (porcentaje)</div>
+            <div id="tablaRegistros2"></div>
+        </div>
+        <div class="col-xl-1"></div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-xl-12">
+            <div>Análisis de tiempos de paro</div>
+            <div id="tablaRegistros3" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div id="div_general02" style="display:none;">
+    <br />
+
+    <h4>Tabla de consolidado de todos los activos</h4>
+
+    <div class="col-xl-12">
+
+        <div class="alert alert-success" id="progresBar5" style="display:none;">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only">Calculando valores...</span>
+            </div>
+            <a>&nbsp; Calculando valores, esta opción tardará unos minutos. Usted puede cambiar sus filtros durante el proceso...</a>
+            <br />
+        </div>
+
+        <figure class="highcharts-figure">
+            <div id="container3"></div>
+        </figure>
+    </div>
+
+    <div id="gridConsolidado"></div>
+</div>
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa = '@Html.Raw(Url.Action("AsignaEmpresa","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.Historicos_variables2 = '@Html.Raw(Url.Action("Historicos_variables2","Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.IndicadorAnalisisTiempos = '@Html.Raw(Url.Action("IndicadorAnalisisTiempos", "Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.IndicadorTipoAnalisisTiempos = '@Html.Raw(Url.Action("IndicadorTipoAnalisisTiempos", "Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.Lista_activos2 = '@Html.Raw(Url.Action("Lista_activos2","Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ConsolidadoKpiTiempos = '@Html.Raw(Url.Action("ConsolidadoKpiTiempos", "Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    //FactoryX.Urls.agrega_grafico_disponibilidad = '@Html.Raw(Url.Action("agrega_grafico_disponibilidad","Analitica", new { @idEmpresa = ViewBag.idEmpresa}))';
+    //IndicadorTipoAnalisisTiempos
+</script>
+<script src="~/js/GestionKPI_tiempos.js" asp-append-version="true"></script>

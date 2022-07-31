@@ -1,0 +1,155 @@
+﻿@model List<FactoryX.Models.Institucion>
+
+@{
+    ViewData["Title"] = "Empresas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_DevExtremeLayout.cshtml";
+    //Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Performance</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/loading.css" rel="stylesheet" asp-append-version="true" />
+
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+
+    <link href="~/css/Footer.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/estilo1.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/seqtor_principal.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/botones.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/colores.css" rel="stylesheet" asp-append-version="true" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    @*<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+        </script>*@
+
+</head>
+
+
+<br />
+
+<br />
+<br />
+
+@*<div>
+    @ViewBag.ip
+</div>*@
+
+<!-- Modal seleccionar empresa -->
+<div class="modal fade" id="modalLogin" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                <h4 class="modal-title">Selección de Centro de Operación</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.DropDownList("SelecEmpresa", new SelectList(Model, "Id", "Des_institucion"), "--Seleccione su centro de operación--", new { @required = "required", @class = "SelecEmpresa" })
+                </div>
+                <br />
+                <a class="btn-material" style="color:white; position:absolute; cursor:pointer; margin-left:77%;" onclick="EmrpesaSeleccionada()"> Aceptar </a>
+
+                <script>
+                    var emp = "";
+                    document.getElementById('SelecEmpresa').value;
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal cerrarSesion -->
+<div class="modal fade" id="cerrarSesion" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                <h4 class="modal-title" style="text-align:center;">El sistema ha detectado que existe una sesión abierta en otro equipo, usted necesita cerrarla para poder hacer uso en este equipo, esta de acuerdo a que se procese automaticamente?</h4>
+            </div>
+            <div class="">
+
+                <br />
+                <div class="modal-body">
+                    <a class="btn-material" style="color:white; margin-left:55%; position:absolute;" onclick="ActualizaIp()"> <i class="far fa-check-circle"></i> Aceptar </a>
+                    <a class="btn-material" style="color:white; margin-left:80%; position:absolute;" onclick="RedireccionaInicio()"><i class="fas fa-power-off"></i> Salir</a>
+                </div>
+
+
+                <script>
+                    var emp = "";
+                    document.getElementById('SelecEmpresa').value;
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    //Variables de rutas
+    FactoryX.Urls.ListaEmpresas = '@Url.Action("ListaEmpresas","Home")';
+    FactoryX.Urls.ActualizaIp   = '@Url.Action("ActualizaIp","Home")';
+
+</script>
+<script src="~/js/Empresas.js" asp-append-version="true"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+@if (ViewBag.Cond == 1)
+{
+    <script>
+        function abrir() {
+            $("#modalLogin").modal()
+        }
+        window.onload = abrir();
+    </script>
+}
+else
+{
+    <script>
+        function abrir() {
+            $("#cerrarSesion").modal()
+        }
+
+        window.onload = abrir();
+    </script>
+}
+
+

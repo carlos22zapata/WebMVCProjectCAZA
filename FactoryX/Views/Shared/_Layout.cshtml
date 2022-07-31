@@ -1,0 +1,367 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Performance</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/loading.css" rel="stylesheet" asp-append-version="true" />
+
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+    <link href="~/MenuVertical/css/style.css" rel="stylesheet" />
+
+    <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill" asp-append-version="true"></script>
+
+
+    <link href="~/css/Footer.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/estilo1.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/seqtor_principal.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/botones.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/colores.css" rel="stylesheet" asp-append-version="true" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    @*<script src="https://code.jquery.com/jquery-3.2.1.js"*@
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @section Localization{
+        @*<script src="https://cdn3.devexpress.com/jslib/19.2.5/js/localization/dx.messages.es.js"></script>*@
+        <script src="@Url.Action( "CldrData", "Localization", new { t = CldrDataScriptBuilder.GetCacheParam() })"></script>    
+        <script src="~/js/devextreme/localization/dx.messages.es.js"></script>
+        <script src="~/js/devextreme/dx.web.js"></script>
+    }
+
+    <link href="~/css/devextreme/dx.common.css" rel="stylesheet" />
+    <link href="~/css/devextreme/dx.light.css" rel="stylesheet" />
+    @*<script src="~/js/devextreme/jquery.js" asp-append-version="true"></script>*@
+    <script src="~/js/devextreme/cldr.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/cldr/event.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/cldr/supplemental.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/cldr/unresolved.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/globalize.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/globalize/message.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/globalize/number.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/globalize/currency.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/globalize/date.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/dx.all.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/dx.aspnet.mvc.js" asp-append-version="true"></script>
+    <script src="~/js/devextreme/dx.aspnet.data.js" asp-append-version="true"></script>
+
+
+
+
+    <script>
+        //DevExpress.localization.locale(navigator.language);
+        //Globalize.locale(navigator.language);
+    </script>
+
+    <!-- Exportar a excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.3.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <!-- reference the DevExtreme sources here -->
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @* Importar archivos de excel *@
+    <script src="~/js/SheetJS/xlsx.full.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+
+    @*<link href="~/css/JSCalendar/datepicker.css" rel="stylesheet" />*@
+    @*<link href="~/css/JSCalendar/layout.css" rel="stylesheet" />*@
+    @*<script src="~/js/JSCalendar/datepicker.js"></script>
+        <script src="~/js/JSCalendar/eye.js"></script>
+        <script src="~/js/JSCalendar/utils.js"></script>*@
+    @*<script src="~/js/JSCalendar/layout.js"></script>*@
+
+    @* Uncomment to use the Gantt control *@
+    @*<script src="~/js/devextreme/dx-gantt.js"></script>*@
+    @* Uncomment to use the Diagram control *@
+    @*<script src="~/js/devextreme/dx-diagram.js"></script>*@
+    @* De layout devexpres FIN*@
+
+    @* Vue JS *@
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuejs-datepicker"></script>
+
+    <link href="~/css/bloqueo_pantalla.css" rel="stylesheet" />
+
+    @* Para traducir en DevExpress *@
+
+
+    <style>
+
+        /* Tooltip container */
+        .tooltipx {
+            /*position: relative;*/
+            /*display: inline-block;
+            border-bottom: 1px dotted black;*/ /* If you want dots under the hoverable text */
+        }
+
+            /* Tooltip text */
+            .tooltipx .tooltiptextx {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
+                border-radius: 6px;
+                /* Position the tooltip text - see examples below! */
+                position: absolute;
+                z-index: 1;
+            }
+
+            /* Show the tooltip text when you mouse over the tooltip container */
+            .tooltipx:hover .tooltiptextx {
+                visibility: visible;
+            }
+    </style>
+
+
+</head>
+<body style="height: 100%;">
+
+    @*<div id="div_bloqueo" class="externo">
+        <div class="blocker">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only" style="color:forestgreen">Calculando valores...</span>
+            </div>
+            <a style="background-color: grey;">&nbsp; Procesando registros, por favor espere...</a>
+            <br />
+        </div>
+    </div>*@
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark  bg-dark border-bottom ">
+            <div class="row">
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Factory Performance Booster</a>*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="wrapper d-flex align-items-stretch ">
+
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="p-4">
+                <h1><a class="logo" asp-controller="Home" asp-action="Empresas">Factory <span>Performance Booster</span></a></h1>
+
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a asp-action="Planificacion" asp-controller="Planificacion" asp-route-idEmpresa="@ViewBag.idEmpresa"><i class="fas fa-list-ol"></i> Gestión de planes de producción</a>
+                    </li>
+                    <li>
+                        <a asp-action="Monitoreo" asp-controller="Monitoreo" asp-route-idEmpresa="@ViewBag.idEmpresa"><i class="fas fa-chart-area"></i> Control de procesos en tiempo real</a>
+                    </li>
+
+
+
+                    <li class="">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="far fa-chart-bar"></i> Gestión de operación</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+
+                            <li>
+                                <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></i> Control de OEE</a>
+
+
+                                <ul class="collapse list-unstyled" id="homeSubmenu2">
+
+                                    @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdminRole")).Succeeded)
+                                    {
+                                        <li>
+                                            <a asp-action="OEE" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Tendencia OEE</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Disponibilidad" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Control de la disponibilidad de activos</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Rendimiento" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Control del rendimiento</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Calidad" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Control de la calidad</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="#homeSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"></i> Gestión KPI's</a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu4">
+                                    @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdminRole")).Succeeded)
+                                    {
+                                        <li>
+                                            <a asp-action="GestionKPI" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Unidades producidas</a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-action="GestionKPI_indicadores" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Productividad</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+                            @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdminRole")).Succeeded)
+                            {
+                                <li>
+                                    <a asp-action="GestionKPI_tiempos" asp-controller="Analitica" asp-route-idEmpresa="@ViewBag.idEmpresa">Análisis de tiempos</a>
+                                </li>
+                                <li>
+                                    <a asp-action="HistoricoVariables" asp-controller="HistoricoVariables" asp-route-idEmpresa="@ViewBag.idEmpresa">Análisis histórico de variables capturadas</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+
+
+
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdminRole")).Succeeded)
+                    {
+
+                        @*<li>
+                            <a asp-action="Lean" asp-controller="Home" asp-route-idEmpresa="@ViewBag.idEmpresa"><i class="fas fa-chart-line"></i> Lean management</a>
+                        </li>*@
+
+                        @*<li>
+                            <a asp-action="InventarioTR" asp-controller="Home" asp-route-idEmpresa="@ViewBag.idEmpresa"><i class="fas fa-boxes"></i> Control de inventario en tiempo real</a>
+                        </li>*@
+
+                        @*<li>
+                            <a asp-action="CCostos" asp-controller="Home" asp-route-idEmpresa="@ViewBag.idEmpresa"><i class="fas fa-file-invoice-dollar"></i> Gestión de costos en tiempo real</a>
+                        </li>*@
+
+                        <li class="">
+                            <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-clipboard-list"></i> Tablas principales</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                                <li>
+                                    <a asp-action="Productos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Productos (SKU)</a>
+                                </li>
+                                @*<li>
+                                        <a asp-action="DetallesProductos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Analisis de productos (SKU)</a>
+                                    </li>*@
+                                <li>
+                                    <a asp-action="Activos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Activos</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Turnos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Turnos</a>
+                                </li>
+                                <li>
+                                    <a asp-action="TurnosDinamicos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Configuración de turnos</a>
+                                </li>
+                                @*<li>
+                                        <a asp-action="TurnosDinamicos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Turnos dinamicos</a>
+                                    </li>*@
+                                <li>
+                                    <a asp-action="DiasInactivos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Registro de inactividad</a>
+                                </li>
+                                <li>
+                                    <a asp-action="CapacidadesActivos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Capacidades de activos</a>
+                                </li>
+                                <li>
+                                    <a asp-action="incidencias" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">Registro de paros</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cogs"></i> Configuración</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu3">
+                                <li>
+                                    <a asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-idEmpresa="@ViewBag.idEmpresa">Administración de Cuenta</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Configuracion" asp-controller="Configuracion" asp-route-idEmpresa="@ViewBag.idEmpresa">Parametros iniciales</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        @*<li class="">
+                            <a href="#homeSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-boxes"></i> Inventario</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu5">
+                                <li>
+                                    <a asp-action="DetallesProductos" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa">
+                                        <div class="tooltipx">
+                                            <i class="fas fa-exclamation-triangle" style="color:#FEE659;"></i> Analisis de productos (SKU)
+                                            <span class="tooltiptextx">Módulo no disponible</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="InventarioTR" asp-controller="Inventario" asp-route-idEmpresa="@ViewBag.idEmpresa">
+                                        <div class="tooltipx">
+                                            <i class="fas fa-exclamation-triangle" style="color:#FEE659;"></i> Control de inventario en tiempo real
+                                            <span class="tooltiptextx">Módulo no disponible</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+                    }
+                </ul>
+
+                <div class="footer">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> | Factory Performance Booster <i class="icon-heart" aria-hidden="true"></i> by <a style="color:white" href="https://www.cogcs.com/" target="_blank">COGNITIVA</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <div class="container">
+                <partial name="_CookieConsentPartial" />
+                <main role="main" class="pb-3" id="cuerpoPrincipal">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/MenuVertical/js/popper.js" asp-append-version="true"></script>
+    <script src="~/MenuVertical/js/main.js" asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

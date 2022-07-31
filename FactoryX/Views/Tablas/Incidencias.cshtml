@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Activos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro de paros</h1>
+
+<div class="scroller" id="tb_Tipo_incidencia">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Tipos_incidencia>().ID("dg_Tipo_incidencia")
+    .DataSource(ds => ds.Mvc()
+        .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+        .Controller("Tablas")
+        .LoadAction("GetTipoIncidencias")
+        .InsertAction("InsertTipoIncidencia")
+        .UpdateAction("UpdateTipoIncidencia")
+        .DeleteAction("DeleteTipoIncidencia")
+        .Key("Cod_tipo")
+        .OnBeforeSend("asignaId") //Ejecuta la función en javascript
+    )
+    .ShowBorders(true)
+    .Editing(editing => editing
+                        .Mode(GridEditMode.Row)
+                        .AllowAdding(true)
+                        .AllowUpdating(true)
+                        .AllowDeleting(true)
+                        .UseIcons(true)
+                        .Texts(t => t.ConfirmDeleteMessage("Esta seguro que desea eliminar el registro?"))
+                      )
+    .Columns(columns =>
+    {
+        //columns.AddFor(m => m.Cod_tipo).Width(150);
+
+        columns.AddFor(m => m.Des_tipo).MinWidth(200);
+
+        columns.AddFor(m => m.Planificado).Width(100);
+
+        columns.Add().Caption("Opciones")
+                .Type(GridCommandColumnType.Buttons)
+                .Width(110)
+                .Buttons(b =>
+                {
+
+                b.Add().Name(GridColumnButtonName.Edit).Hint("Editar paro");
+                b.Add().Name(GridColumnButtonName.Delete).Hint("Borrar paro");
+
+        });
+
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+    )
+
+</div>
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa      = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaHora         = '@Html.Raw(Url.Action("AsignaHora","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GuardaHorasActivos = '@Html.Raw(Url.Action("GuardaHorasActivos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.AsignaCod_activo   = '@Html.Raw(Url.Action("AsignaCod_activo","Tablas"))';
+
+</script>
+
+<script src="~/js/TablasPrincipales.js"></script>

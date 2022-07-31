@@ -1,0 +1,910 @@
+﻿@model FactoryX.Models.Turnos_activos_extras_view
+
+@{
+    ViewData["Title"] = "Turnos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/Calendar/main.css" rel="stylesheet" />
+<script src="~/js/Calendar/main.js"></script>
+<script src="~/js/TurnosDinamicos.js"></script>
+
+<link href="~/js/fullcalendar-3.4.0/lib/cupertino/jquery-ui.min.css" rel="stylesheet" />
+
+@*<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />*@
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+<link href="~/js/fullcalendar-3.4.0/fullcalendar.css" rel="stylesheet" asp-append-version="true" />
+<script src="~/js/fullcalendar-3.4.0/locale/es.js" asp-append-version="true"></script>
+<script src="~/js/fullcalendar-3.4.0/fullcalendar.js" asp-append-version="true"></script>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+
+
+@*<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>*@
+@*<link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />*@
+
+@*<div id="div_bloqueo" class="blocker" style="display:none;">
+    <div id="clacIni" class="interno">
+        <div class="spinner-border text-secondary" role="status">
+            <span class="sr-only" style="color:forestgreen">Calculando valores...</span>
+        </div>
+        <a>&nbsp; Procesando registros, por favor espere...</a>
+        <br />
+    </div>
+</div>*@
+
+<h1>Configuración de turnos</h1>
+<br />
+<br />
+
+<div class="row">
+    <button type="button" class="btn btn-info" id="btn_agregarMasivo1" onclick="abreFormularios(1)">Agregar turno</button>
+    &nbsp;&nbsp;
+    <button type="button" class="btn btn-danger" id="btn_eliminarMasivo1" onclick="abreFormularios(2)">Eliminar turno</button>
+    @*<button type="button" class="btn btn-blue" id="btn_muestraCalendario" onclick="muestraCalendario()">Mostrar en calendario</button>*@
+
+</div>
+
+<br />
+
+<div id="tablaCalendar" style="display:inline;" class="col-md-12">
+    @* Tabla para mostrar los eventos *@
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Turnos_activos_extras_view3>().ID("dg_calendario")
+            .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("Tablas")
+            .LoadAction("GetCalendario")
+            .Key("id")
+
+
+        ).Columns(col => {
+
+            //col.Add().Caption("SeleccionarT")
+            //.Type(GridCommandColumnType.Selection)
+            //.Width(40);
+
+            //col.AddFor(m => m.Fecha_ini).Width(150).SortOrder(SortOrder.Desc).FilterValue( DateTime.Now); ;
+
+            //col.AddFor(m => m.Fecha_fin).Width(150);
+
+            col.AddFor(m => m.Mes).FilterValue(DateTime.Now.Month).Width(100);
+
+            col.AddFor(m => m.Ano).Caption("Año").FilterValue(DateTime.Now.Year).Width(100);
+
+            col.AddFor(m => m.Fecha_ini).Caption("Fecha").Format("dd/MM/yyyy").SortOrder(SortOrder.Desc).GroupIndex(0).AutoExpandGroup(false)
+            .EditorOptions(new
+            {
+                dateSerializationFormat = "yyyy-MM-ddTHH:mm:ss"
+            }); ;
+
+            col.AddFor(m => m.Cod_activo).Caption("Código Activo");
+
+            col.AddFor(m => m.Des_activo).Caption("Nombre Activo");
+
+            col.AddFor(m => m.Cod_turno).Caption("Código Turno");
+
+            //col.AddFor(m => m.Hora_fin1);
+        })
+        .Paging(paging => paging.PageSize(20))
+
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+        .ShowBorders(true)
+
+     //.OnSelectionChanged("selection_changedT")
+     )
+</div>
+
+<br />
+<hr />
+<br />
+
+<div id="ModalDetalle" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="" style="margin-left:10px;">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title " style="display: block;">Borrar horario de activos</h4> <br />
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                <hr />
+            </div>
+            <div class="modal-body">
+                <p id="pDetails"></p>
+
+                <div class="row form-group" id="borrarDetalles" style="display:none;">
+                    <div class="">
+                        <hr class="col-md-12" />
+
+                        @*&nbsp;&nbsp;&nbsp;&nbsp;*@
+                        <div class="dx-field-label">Fecha inicio:</div>
+                        <div class="row">
+                            <div class="">
+                                @(Html.DevExtreme().DateBox()
+                                    .Type(DateBoxType.Date)
+                                    .ID("fechaIniB")
+                                    .DisplayFormat("dd/MM/yyyy")
+                                    .UseMaskBehavior(true)
+                                )
+                            </div>
+                        </div>
+
+                        @*&nbsp;&nbsp;&nbsp;&nbsp;*@
+                        <div class="dx-field-label">Fecha fin:</div>
+                        <div class="row">
+                            <div class="">
+                                @(Html.DevExtreme().DateBox()
+                                    .Type(DateBoxType.Date)
+                                    .ID("fechaFinB")
+                                    .DisplayFormat("dd/MM/yyyy")
+                                    .UseMaskBehavior(true)
+                                )
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div>
+
+                        <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los días:</label>
+
+                        <div class="row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="Lunes" value="2" id="chLu_"> &nbsp;&nbsp;
+                            <label for="Lunes"> Lunes </label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="checkbox" name="Martes" value="3" id="chMa_"> &nbsp;&nbsp;
+                            <label for="Martes"> Martes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="checkbox" name="Miercoles" value="4" id="chMi_"> &nbsp;&nbsp;
+                            <label for="Miercoles"> Miercoles</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="checkbox" name="Jueves" value="5" id="chJu_"> &nbsp;&nbsp;
+                            <label for="Jueves"> Jueves</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="Viernes" value="6" id="chVi_"> &nbsp;&nbsp;
+                                <label for="Viernes"> Viernes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Sabado" value="7" id="chSa_"> &nbsp;&nbsp;
+                                <label for="Sabado"> Sabado</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Domingo" value="1" id="chDo_"> &nbsp;&nbsp;
+                                <label for="Domingo"> Domingo</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @* Data grid de Turnos *@
+
+                    <hr class="col-md-12" />
+
+                    <div class="col-md-12" style="color:red;">
+
+                        <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los turnos:</label>
+
+                        @(Html.DevExtreme().DataGrid<FactoryX.Models.Turnos>().ID("dg_Turnos2BT")
+                                .DataSource(ds => ds.Mvc()
+                                .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                                .Controller("Tablas")
+                                .LoadAction("GetTurnos")
+                                .Key("Cod_turno")
+
+                            ).Columns(col => {
+
+                                col.Add().Caption("SeleccionarBT")
+                                .Type(GridCommandColumnType.Selection)
+                                .Width(40);
+
+                                col.AddFor(m => m.Cod_turno);
+                                //col.AddFor(m => m.Hora_fin1);
+                            })
+                            .Paging(paging => paging.PageSize(5))
+
+                            .Selection(s => s.Mode(SelectionMode.Multiple))
+                            .AllowColumnResizing(true)
+                            .AllowColumnReordering(true)
+                            .FilterRow(filterRow => filterRow.Visible(true))
+                            .ShowBorders(true)
+                            .OnSelectionChanged("selection_changedBT")
+                            )
+                    </div>
+
+                    <br />
+
+                    @* Data grid de Activos *@
+
+                    <hr class="col-md-12" />
+
+                    <div class="col-md-12">
+                        <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los activos:</label>
+
+                        @(Html.DevExtreme().DataGrid<FactoryX.Models.ActivosLista>().ID("dg_Activos2L")
+                                .DataSource(ds => ds.Mvc()
+                                .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                                .Controller("Tablas")
+                                .LoadAction("GetActivos")
+                                .Key("Cod_activo")
+
+                            ).Columns(col => {
+
+                                col.Add().Caption("SeleccionarBT")
+                                .Type(GridCommandColumnType.Selection)
+                                .Width(40);
+
+                                col.AddFor(m => m.Cod_activo).Caption("Código").Width(150);
+                                col.AddFor(m => m.Des_activo).Caption("Nombre");
+                            })
+                            .Paging(paging => paging.PageSize(5))
+
+                            .Selection(s => s.Mode(SelectionMode.Multiple))
+                            .AllowColumnResizing(true)
+                            .AllowColumnReordering(true)
+                            .FilterRow(filterRow => filterRow.Visible(true))
+                            .ShowBorders(true)
+                            .OnSelectionChanged("selection_changedB")
+                            )
+                    </div>
+
+                    <br />
+                    
+                    <button type="button" class="btn btn-outline-danger" id="btn_borraActividadLote" style="width:100%;">Borrar registros</button>
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="btn_borraActividadLL" onclick="borraLote()">Mostrar eventos por lote</button>
+
+                <div id="borraUno">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_borraActividad">Borrar evento</button>
+                </div>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@**Modal de ingreso de actividad en el horario *@
+<div class="scroller">
+    @*<form class="modal fade" id="modalSKU_Historico" role="dialog">*@
+    <form class="modal fade" id="ModalInsertaCalendario" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title " style="display: block;">Ingreso de horario de activo</h4> <br />
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body" style="display: block;">
+                    <h6 class="modal-title " id="titulo" style="display: block;"></h6>
+                    <br />
+
+                    <div class="row form-group">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="dx-field-label">Fecha inicio:</div>
+                        <div class="row dx-field-value">
+                            <div class="">
+                                @(Html.DevExtreme().DateBox()
+                                    .Type(DateBoxType.Date)
+                                    .ID("fechaIni")
+                                    .DisplayFormat("dd/MM/yyyy")
+                                    .UseMaskBehavior(true)
+                                )
+                            </div>
+                        </div>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="dx-field-label">Fecha fin:</div>
+                        <div class="row dx-field-value">
+                            <div class="">
+                                @(Html.DevExtreme().DateBox()
+                                    .Type(DateBoxType.Date)
+                                    .ID("fechaFin")
+                                    .DisplayFormat("dd/MM/yyyy")
+                                    .UseMaskBehavior(true)
+                                )
+                            </div>
+                        </div>
+
+                        <br /><br /><br />
+
+                        <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los días:</label>
+                        @*<div class="col-md-8">
+                                @Html.DropDownList("CB_Turno", new SelectList(Model.turnos, "Cod_turno", "Cod_turno"), "-- Seleccione un activo --")
+                            </div>*@
+
+                        <br />
+
+                        <div>
+                            <div class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="Lunes" value="2" id="chLu"> &nbsp;&nbsp;
+                                <label for="Lunes"> Lunes </label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Martes" value="3" id="chMa"> &nbsp;&nbsp;
+                                <label for="Martes"> Martes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Miercoles" value="4" id="chMi"> &nbsp;&nbsp;
+                                <label for="Miercoles"> Miercoles</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Jueves" value="5" id="chJu"> &nbsp;&nbsp;
+                                <label for="Jueves"> Jueves</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="Viernes" value="6" id="chVi"> &nbsp;&nbsp;
+                                <label for="Viernes"> Viernes</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Sabado" value="7" id="chSa"> &nbsp;&nbsp;
+                                <label for="Sabado"> Sabado</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input type="checkbox" name="Domingo" value="1" id="chDo"> &nbsp;&nbsp;
+                                <label for="Domingo"> Domingo</label><br> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        @* Data grid de Turnos *@
+
+                        <hr class="col-md-12" />
+
+                        <div>
+
+                            <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los turnos:</label>
+
+                            @(Html.DevExtreme().DataGrid<FactoryX.Models.Turnos>().ID("dg_Turnos2")
+                                .DataSource(ds => ds.Mvc()
+                                .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                                .Controller("Tablas")
+                                .LoadAction("GetTurnos")
+                                .Key("Cod_turno")
+
+                            ).Columns(col => {
+
+                                col.Add().Caption("SeleccionarT")
+                                .Type(GridCommandColumnType.Selection)
+                                .Width(40);
+
+                                col.AddFor(m => m.Cod_turno).Caption("Código");
+                                //col.AddFor(m => m.Hora_fin1);
+                            })
+                            .Paging(paging => paging.PageSize(5))
+
+                            .Selection(s => s.Mode(SelectionMode.Multiple))
+                            .AllowColumnResizing(true)
+                            .AllowColumnReordering(true)
+                            .FilterRow(filterRow => filterRow.Visible(true))
+                            .ShowBorders(true)
+                            .OnSelectionChanged("selection_changedT")
+                            //.OnContentReady("cargaInicial")
+                            )
+                        </div>
+
+                        <br />
+
+                        @* Data grid de Activos *@
+
+                        <hr class="col-md-12" />
+
+                        <div>
+                            <label class="col-md-12 control-label" style="font-weight:700; color:dimgray;">Seleccione los activos:</label>
+
+                            @(Html.DevExtreme().DataGrid<FactoryX.Models.ActivosLista>().ID("dg_Activos2")
+                                .DataSource(ds => ds.Mvc()
+                                .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+                                .Controller("Tablas")
+                                .LoadAction("GetActivos")
+                                .Key("Cod_activo")
+
+                            ).Columns(col => {
+
+                                col.Add().Caption("Seleccionar")
+                                .Type(GridCommandColumnType.Selection)
+                                .Width(40);
+
+                                col.AddFor(m => m.Cod_activo).Caption("Código");
+                                col.AddFor(m => m.Des_activo).Caption("Nombre");
+                            })
+                            .Paging(paging => paging.PageSize(5))
+
+                            .Selection(s => s.Mode(SelectionMode.Multiple))
+                            .AllowColumnResizing(true)
+                            .AllowColumnReordering(true)
+                            .FilterRow(filterRow => filterRow.Visible(true))
+                            .ShowBorders(true)
+                            .OnSelectionChanged("selection_changed")
+                            )
+                        </div>
+
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-success" id="btn_guardaActividad" style="width:100%;">Guardar registro</button>
+
+                        <div id="clac1" style="display:none; color:forestgreen;">
+                            <div class="spinner-border text-secondary" role="status">
+                                <span class="sr-only" style="color:forestgreen">Calculando valores...</span>
+                            </div>
+                            <a>&nbsp; Procesando registros, por favor espere...</a>
+                            <br />
+                        </div>
+                    </div>
+
+                    <input type="text" id="Lab_activo" style="display:none;" />
+                    <input type="text" id="Lab_variable" style="display:none;" />
+                    <input type="text" id="Lab_id" style="display:none;" />
+                    <input type="text" id="Lab_tabla" style="display:none;" />
+                    <input type="text" id="Lab_idIncidencia" style="display:none;" />
+                </div>
+
+                <div class="modal-footer sin">
+                    @*<button type="button" class="btn btn-outline-primary" onclick="enviaCorreo()"><i class="fas fa-history"></i> Cambio de historico</button>*@
+                    @*<button type="button" class="btn btn-outline-primary" onclick="verWarningSku('s')"><i class="fas fa-history"></i> Cambio de historico de SKU</button>*@
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-door-open"></i> Cancelar</button>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa        = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.RegCalendario        = '@Html.Raw(Url.Action("RegCalendario","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.InsertCalendario     = '@Html.Raw(Url.Action("InsertCalendario", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.DeleteCalendario     = '@Html.Raw(Url.Action("DeleteCalendario", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.DeleteCalendarioLote = '@Html.Raw(Url.Action("DeleteCalendarioLote", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.ValidaTurnos         = '@Html.Raw(Url.Action("ValidaTurnos", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+</script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        let turnosX = [];
+
+        inicial();
+
+        function inicial() {
+            var events = [];
+
+            //$(".alert-dismissible").fadeTo(6000, 5000).slideUp(5000, function () {
+            //    $(".alert-dismissible").alert('close');
+            //});
+
+            $.ajax({
+                type: "GET",
+                url: FactoryX.Urls.RegCalendario,
+                data: {}
+            }).done(function (data) {
+
+                console.log('Inicial');
+
+                $.each(data, function (i, v) {
+                    events.push({
+                        id: v.id,
+                        title: v.Cod_activo,
+                        description: "",
+                        start: v.Fecha_ini,
+                        end: v.Fecha_fin
+                    });
+                })
+
+                var div = document.getElementById('calendar');
+
+                while (div.firstChild) {
+                    div.removeChild(div.firstChild);
+                }
+
+                //div.setAttribute("data-language", "es");
+
+                div.classList.add("col-md-12");
+
+                GenerateCalendar(events);
+
+            }).fail(function (data) {
+                alert('hubo un error interno al mostrar los registros');
+            });
+        }
+
+        function GenerateCalendar(events) {
+            $('#calendar').fullCalendar('destroy');
+            $('#calendar').fullCalendar({
+
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                //initialDate: '2020-09-01',
+                defaultDate: new Date(),
+                locale: 'es',
+                themeSystem: 'bootstrap3',
+                navLinks: true, // can click day/week names to navigate views
+                selectable: true,
+                selectMirror: true,
+                select: function (arg) {
+                    $('#chLu').each(function () { this.checked = false; });
+                    $('#chMa').each(function () { this.checked = false; });
+                    $('#chMi').each(function () { this.checked = false; });
+                    $('#chJu').each(function () { this.checked = false; });
+                    $('#chVi').each(function () { this.checked = false; });
+                    $('#chSa').each(function () { this.checked = false; });
+                    $('#chDo').each(function () { this.checked = false; });
+
+                    var dd = moment(arg.date('yyyy/MM/dd')).format('YYYY/MM/DD'); //moment(arg.date('MM/dd/yyyy')).format('MM/DD/yyyy');
+                    //alert(dd);
+
+                    $('#fechaIni').dxDateBox('instance').option({ value: dd });
+                    $('#fechaFin').dxDateBox('instance').option({ value: dd });
+
+                    $('#ModalInsertaCalendario').modal();
+
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+
+                    $('#chLu_').each(function () { this.checked = false; });
+                    $('#chMa_').each(function () { this.checked = false; });
+                    $('#chMi_').each(function () { this.checked = false; });
+                    $('#chJu_').each(function () { this.checked = false; });
+                    $('#chVi_').each(function () { this.checked = false; });
+                    $('#chSa_').each(function () { this.checked = false; });
+                    $('#chDo_').each(function () { this.checked = false; });
+
+                    var dd = moment(calEvent.start.date('yyyy/MM/dd')).format('YYYY/MM/DD');
+
+                    //alert('Prueba ################ 0123456789');
+
+                    $('#fechaIniB').dxDateBox('instance').option({ value: dd });
+                    $('#fechaFinB').dxDateBox('instance').option({ value: dd });
+
+                    $('#ModalDetalle #eventTitle').text(calEvent.title);
+                    var $description = $('<div/>');
+                    iddd = calEvent.id;
+                    $description.append($('<p/>').html('<b id="idxx">Id:' + calEvent.id + '</b>'));
+                    $description.append($('<p/>').html('<b>Inicio:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                    if (calEvent.end != null) {
+                        $description.append($('<p/>').html('<b>Fin:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                    }
+                    $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                    $('#ModalDetalle #pDetails').empty().html($description);
+
+                    $('#btn_borraActividadLL').text('Mostrar eventos por lote');
+                    $('#borrarDetalles').hide();
+                    $('#borraUno').show();
+
+                    $('#ModalDetalle').modal();
+
+                },
+                //dateClick: function (info) {
+                //    alert('Clicked on: ' + info.dateStr);
+                //    //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                //    //alert('Current view: ' + info.view.type);
+                //    // change the day's background color just for fun
+                //    //info.dayEl.style.backgroundColor = 'red';
+                //},
+                editable: true,
+                //dayMaxEvents: true, //allow "more" link when too many events
+                //eventColor: '#378006',
+                eventLimit: true,
+                eventColor: '#AAD9E7',
+                events: events
+
+            })
+
+            $('#calendar').fullCalendar({
+                themeSystem: 'bootstrap',
+                locale: 'es'
+            });
+        }
+
+        $('#btn_guardaActividad').click(function () {
+                        
+            var Lunes = document.getElementById('chLu').checked;
+            var Martes = document.getElementById('chMa').checked;
+            var Miercoles = document.getElementById('chMi').checked;
+            var Jueves = document.getElementById('chJu').checked;
+            var Viernes = document.getElementById('chVi').checked;
+            var Sabado = document.getElementById('chSa').checked;
+            var Domingo = document.getElementById('chDo').checked;
+
+            if (arregloTurnos().length === 0) {
+                Swal.fire({
+                    title: "Debe escoger un turno",
+                    text: "Por favor seleccione un turno de la lista.",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else if (Lunes === false && Martes === false && Miercoles === false &&
+                Jueves === false && Viernes === false && Sabado === false && Domingo === false) {
+
+                Swal.fire({
+                    title: "Seleccione un día",
+                    text: "Debe escoger al menos un día para guardar el registro",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else if (arregloActivos().length === 0) {
+                Swal.fire({
+                    title: "Seleccione un activo",
+                    text: "Debe escoger al menos un activo para guardar el registro",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else {
+
+                var fecha1 = new Date($('#fechaIni').dxDateBox("option", "value"));
+                var fecha2 = new Date($('#fechaFin').dxDateBox("option", "value"));
+
+                var f1 = moment(fecha1, 'YYYY-MM-DD'); //$('#fechaIni').dxDateBox("option", "value");
+                var f2 = moment(fecha2, 'YYYY-MM-DD');  //$('#fechaFin').dxDateBox("option", "value");
+
+                var diferenciaDias = f2.diff(f1, 'days');
+
+                var fechaDia = f1;
+
+                let listaActivos = [];
+                listaActivos = arregloActivos();
+
+                let listaTurnos = [];
+                listaTurnos = arregloTurnos();
+
+                let diasInv = [];
+
+                //alert();
+
+                for (var i = 1; i <= diferenciaDias + 1; i++) {
+
+                    //alert(fechaDia);
+
+                    for (var j = 0; j < listaActivos.length; j++) {
+
+                        var cod_activo = listaActivos[j].Cod_activo;
+
+                        for (var k = 0; k < listaTurnos.length; k++) {
+                            var cod_turno = listaTurnos[k].Cod_turno;
+
+                            //console.log(listaTurnos[k].Cod_Turno);
+                            var dia = new Date(fechaDia).getDay();
+
+                            //alert(dia + ' - ' + fechaDia);
+
+                            //console.log(dia);
+                            if ((Lunes === true && dia === 1) ||
+                                (Martes === true && dia === 2) ||
+                                (Miercoles === true && dia === 3) ||
+                                (Jueves === true && dia === 4) ||
+                                (Viernes === true && dia === 5) ||
+                                (Sabado === true && dia === 6) ||
+                                (Domingo === true && dia == 0)) {
+
+                                //alert(fechaDia);
+                                diasInv.push({ "fecha": moment(fechaDia, 'YYYY-MM-DD'), "cod_activo": cod_activo, "cod_turno": cod_turno });
+                            }
+
+
+                        }
+                    }
+
+                    fechaDia = moment(fechaDia.add(1, 'days'), 'YYYY-MM-DD');
+                }
+
+                if (diasInv.length === 0) {
+                    Swal.fire({
+                        title: "No hay coincidencia de los datos",
+                        text: "No existen los días de la semana seleccionados entre las fechas escogidas",
+                        icon: "error",
+                        confirmButtonText: 'Cerrar'
+                    });
+                } else {
+                    insertaRegistro(diasInv);
+                }
+
+                //console.log(diasInv);
+                //alert("Se guardara la información con los datos seleccionados...**");
+                inicial();
+                //$('#ModalInsertaCalendario').modal('toggle');
+                //alert("Recargado");
+            }
+        });
+
+        $('#btn_borraActividad').click(function () {
+
+            var idx = $('#idxx').html().substring(3, $('#idxx').html().length)
+            //console.log(idx);
+            activaDiv('act');
+
+            Swal.fire({
+                title: 'Confirme su solicitud',
+                html: 'Desea borrar este registro?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: "Cancelar",
+                confirmButtonText: 'Continuar'
+            }).then((result) => {
+                if (result.value) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: FactoryX.Urls.DeleteCalendario,
+                        data: { idx }
+                    }).done(function (data) {
+                        inicial();
+                        $('#dg_calendario').dxDataGrid("instance").refresh();
+                        $('#ModalDetalle').modal('hide');
+                        $('#dg_calendario').dxDataGrid("instance").refresh();
+                        activaDiv('des');
+                    }).fail(function (data) {
+                        inicial();
+                        $('#ModalDetalle').modal('hide');
+                        activaDiv('des');
+                    });
+
+                } else {
+                    activaDiv('des');
+                }
+            });
+
+        })
+
+        $('#btn_borraActividadLote').click(function () {
+
+            var Lunes = document.getElementById('chLu_').checked;
+            var Martes = document.getElementById('chMa_').checked;
+            var Miercoles = document.getElementById('chMi_').checked;
+            var Jueves = document.getElementById('chJu_').checked;
+            var Viernes = document.getElementById('chVi_').checked;
+            var Sabado = document.getElementById('chSa_').checked;
+            var Domingo = document.getElementById('chDo_').checked;
+
+            if (arregloTurnosBT().length === 0) {
+                Swal.fire({
+                    title: "Debe escoger un turno",
+                    text: "Por favor seleccione un turno de la lista.",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else if (Lunes === false && Martes === false && Miercoles === false &&
+                Jueves === false && Viernes === false && Sabado === false && Domingo === false) {
+
+                Swal.fire({
+                    title: "Seleccione un día",
+                    text: "Debe escoger al menos un día para guardar el registro",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else if (arregloActivosB().length === 0) {
+                Swal.fire({
+                    title: "Seleccione un activo",
+                    text: "Debe escoger al menos un activo para guardar el registro",
+                    icon: "info",
+                    confirmButtonText: 'Cerrar'
+                });
+            } else {
+
+                var fecha1 = new Date($('#fechaIniB').dxDateBox("option", "value"));
+                var fecha2 = new Date($('#fechaFinB').dxDateBox("option", "value"));
+
+                var f1 = moment(fecha1, 'YYYY-MM-DD'); //$('#fechaIni').dxDateBox("option", "value");
+                var f2 = moment(fecha2, 'YYYY-MM-DD');  //$('#fechaFin').dxDateBox("option", "value");
+
+                var diferenciaDias = f2.diff(f1, 'days');
+
+                var fechaDia = f1;
+
+                let listaActivos = [];
+                listaActivos = arregloActivosB();
+
+                let listaTurnos = [];
+                listaTurnos = arregloTurnosBT();
+
+                let diasInv = [];
+
+                for (var i = 1; i <= diferenciaDias + 1; i++) {
+
+                    //alert(fechaDia);
+                    //alert('Entra aquí');
+
+                    for (var j = 0; j < listaActivos.length; j++) {
+
+                        var cod_activo = listaActivos[j].Cod_activo;
+
+                        for (var k = 0; k < listaTurnos.length; k++) {
+                            var cod_turno = listaTurnos[k].Cod_turno;
+
+                            //console.log(listaTurnos[k].Cod_Turno);
+                            var dia = new Date(fechaDia).getDay();
+
+                            //console.log(dia);
+
+                            if ((Lunes === true && dia === 1) ||
+                                (Martes === true && dia === 2) ||
+                                (Miercoles === true && dia === 3) ||
+                                (Jueves === true && dia === 4) ||
+                                (Viernes === true && dia === 5) ||
+                                (Sabado === true && dia === 6) ||
+                                (Domingo === true && dia == 0)) {
+
+                                //alert(moment(fechaDia, 'YYYY-MM-DD'));
+
+                                diasInv.push({ "fecha": moment(fechaDia, 'YYYY-MM-DD'), "cod_activo": cod_activo, "cod_turno": cod_turno });
+                            }
+
+
+                        }
+                    }
+
+                    fechaDia = moment(fechaDia.add(1, 'days'), 'YYYY-MM-DD');
+                }
+
+                if (diasInv.length === 0) {
+                    Swal.fire({
+                        title: "No hay coincidencia de los datos",
+                        text: "No existen los días de la semana seleccionados entre las fechas escogidas",
+                        icon: "error",
+                        confirmButtonText: 'Cerrar'
+                    });
+                } else {
+                    eliminaRegistrosLote(diasInv);
+                }
+
+                //console.log(diasInv);
+                //alert("Se borraran la información con los datos seleccionados...");
+                $('#dg_calendario').dxDataGrid("instance").refresh();
+                inicial();
+                $('#ModalDetalle').modal('toggle');
+                $('#dg_calendario').dxDataGrid("instance").refresh();
+            }
+        });
+
+        $('#btn_volverCal').click(function () {
+            inicial();            
+        });
+
+    });
+
+
+
+    //console.log(datos());
+
+</script>
+
+<div id="calendar0" class="col-12" >
+
+    <div id="div_bloqueo" class="externo">
+        <div class="blocker">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="sr-only" style="color:forestgreen">Calculando valores...</span>&nbsp;
+            </div>
+            <a style="background-color: grey;">&nbsp; Procesando registros, por favor espere. <br />&nbsp; Este proceso pruede tardar unos minutos dependiendo de la cantidad de registros procesados. <br />&nbsp; No actualice la página mientras transcurre el proceso.</a>
+            <br />
+        </div>
+    </div>
+
+    <h4>Visualización de la información en calendario </h4>
+
+    <button class="btn btn-info" id="btn_volverCal"><i class="fas fa-sync-alt"></i> Reestablecer calendario</button>
+
+    <hr />
+    <div id='calendar'></div>
+</div>
+<br />
+<br />
+
+@*<button type="button" class="btn btn-danger" id="btn_bloqueo" onclick="activaDiv('act')">Activa</button>
+<button type="button" class="btn btn-danger" id="btn_bloqueo" onclick="activaDiv('des')">Desactiva</button>*@

@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "Análisis de productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/css/qrcode-reader.min.css?env=dev">
+
+<h1>Análisis de productos</h1>
+
+
+<br />
+
+<h3>Lectura de código QR para los productos (SKU)</h3>
+
+<form>
+
+    @*<label for="single">Single input (settings in data attributes: no audio, regexp to match URLs):</label>
+        <input id="single" type="text" size="50">
+        <button type="button" class="qrcode-reader" id="openreader-single"
+                data-qrr-target="#single"
+                data-qrr-audio-feedback="false"
+                data-qrr-qrcode-regexp="^https?:\/\/">
+            Read QRCode
+        </button>
+        <br>
+        <br>*@
+
+    @*<label for="single">Single input (rebound click, depending on target input's content):</label>
+        <input id="single2" type="text" size="50">
+        <button type="button" id="openreader-single2"
+                data-qrr-target="#single2"
+                data-qrr-audio-feedback="true">
+            Read or follow QRCode
+        </button>
+        <br>
+        <br>*@
+
+    <input type="text" id="multiple" cols="50" rows="5"></input>
+    <br />
+    <br />
+    <button class="qrcode-reader btn-info" type="button" id="openreader-multi"
+            data-qrr-multiple="true"
+            data-qrr-repeat-timeout="0"
+            data-qrr-line-color="#00FF00"
+            data-qrr-target="#multiple">
+        Leer código QR del producto
+    </button>
+    <br>
+    <br>
+
+</form>
+
+<script src="https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/qrcode-reader.min.js?env=dev"></script>
+
+<script>
+
+    $(function () {
+
+        // overriding path of JS script and audio
+        $.qrCodeReader.jsQRpath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/js/jsQR/jsQR.min.js";
+        //$.qrCodeReader.beepPath = "https://cdn.staticaly.com/gh/mauntrelio/qrcode-reader/master/dist/audio/beep.mp3";
+
+        // bind all elements of a given class
+        $(".qrcode-reader").qrCodeReader();
+
+        // bind elements by ID with specific options
+        $("#openreader-multi2").qrCodeReader({ multiple: true, target: "#multiple2", skipDuplicates: false });
+        $("#openreader-multi3").qrCodeReader({ multiple: true, target: "#multiple3" });
+
+        // read or follow qrcode depending on the content of the target input
+        $("#openreader-single2").qrCodeReader({
+            callback: function (code) {
+                if (code) {
+                    window.location.href = code;
+                }
+            }
+        }).off("click.qrCodeReader").on("click", function () {
+            var qrcode = $("#single2").val().trim();
+            if (qrcode) {
+                window.location.href = qrcode;
+            } else {
+                $.qrCodeReader.instance.open.call(this);
+            }
+        });
+    });
+
+</script>
+
+@**Aquí comienza la parte para la generación del código QR de acuerdo al código del producto*@
+
+<br />
+<br />
+
+<h3>Generador de código QR para los productos (SKU)</h3>
+<script src="~/js/QRcode/qrCodeGenerador.js" asp-append-version="true"></script>
+<br />
+<div class="row">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label style="-webkit-transform: translateY(20%);">Número de etiquetas a generar</label> &nbsp;
+    <input type="number" min="0" id="NroEtiquetas" style="border-radius: 8px; width:100px;" /> &nbsp;
+    <a class="btn btn-info" onclick="abrirEtiquetas(@ViewBag.idEmpresa)" style="color:white;">Imprimir etiquetas</a>
+    @*<a asp-action="ReporteEtiquetas" asp-controller="Tablas" asp-route-idEmpresa="@ViewBag.idEmpresa", asp-route-Cod_producto="AAAAAA"><i class="fas fa-list-ol"></i> Gestión de planes de producción</a>*@
+</div>
+
+<br />
+
+<div class="row" id="divQr" style="display:none;">
+    <div id="qrResult" style="height: 200px;width: 200px"></div>
+    &nbsp; &nbsp;
+    <h3 id="prd"> </h3>
+</div>
+
+<br />
+
+<div>
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Productos>().ID("dg_productos")
+    .DataSource(ds => ds.Mvc()
+        .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+        .Controller("Tablas")
+        .LoadAction("GetProductos")
+        .Key("Cod_producto")
+    )
+    .Columns(columns =>
+    {
+        columns.Add().Caption("Código QR")
+            .Type(GridCommandColumnType.Buttons)
+            .Width(110)
+            .Buttons(b => {
+             b.Add()
+                .Hint("Ver código QR del producto")
+                .Icon("fas fa-qrcode")
+                .OnClick(@<text>abrirModalQR</text>);
+            });
+
+        columns.AddFor(m => m.Cod_producto).Width(150);
+
+        columns.AddFor(m => m.Des_producto);
+
+        columns.AddFor(m => m.Cod_grupo).Width(150)
+        .Lookup(lookup => lookup
+            .DataSource(d => d.Mvc().Controller("Tablas").LoadAction("GetAgrupacion").Key("Cod_grupo"))
+        .ValueExpr("Cod_grupo")
+        .DisplayExpr("Des_grupo")
+        );
+
+    })
+    .AllowColumnResizing(true)
+    .AllowColumnReordering(true)
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    .ShowBorders(true)
+)
+</div>
+
+
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById('qrResult'), {
+        width: 200,
+        height: 200
+    });
+</script>
+
+
+<script src="~/js/DetallesProductos.js"></script>
+
+<script type="text/javascript">
+
+    var FactoryX = FactoryX || {};
+    FactoryX.Urls = FactoryX.Urls || {};
+    FactoryX.Urls.baseUrl = '@Url.Content("~")';
+
+    FactoryX.Urls.AsignaEmpresa = '@Html.Raw(Url.Action("AsignaEmpresa","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.GetProductos = '@Html.Raw(Url.Action("GetProductos","Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+    FactoryX.Urls.Abre_reporte_qr = '@Html.Raw(Url.Action("Abre_reporte_qr", "Tablas", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+
+</script>

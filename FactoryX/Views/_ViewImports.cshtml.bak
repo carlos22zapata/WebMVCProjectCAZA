@@ -1,0 +1,3 @@
+﻿@using FactoryX
+@using FactoryX.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

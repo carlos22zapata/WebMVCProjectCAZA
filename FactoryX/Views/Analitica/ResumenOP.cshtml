@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Calidad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Resumen de orden de producción</h1>
+
+@*<div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;
+        <label id="lab_fini">Fecha desde:</label>
+        &nbsp;
+        <input type="date" id="fini" value="" onchange="fnGrafico1(@ViewBag.idEmpresa, tipoGG, 'H')" />
+    </div>
+
+    <br />
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;
+        <label id="lab_ffin">Fecha hasta:</label>
+        &nbsp;&nbsp;
+        <input type="date" id="ffin" value="" onchange="fnGrafico1(@ViewBag.idEmpresa, tipoGG, 'H')" />
+    </div>
+</div>*@
+
+<div class="scroller" id="tb_activos">
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.ResumenOP>().ID("ListaResumenOP")
+    .DataSource(ds => ds.Mvc()
+    .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+    .Controller("Analitica")
+    .LoadAction("GetResumenOP")
+    .Key("id"))
+    .Editing(editing =>
+    {
+        editing.Mode(GridEditMode.Cell);
+        editing.AllowUpdating(true);
+    })
+    .ShowBorders(true)
+    .Columns(columns =>
+    {        
+
+        columns.AddFor(m => m.Cod_plan).Caption("Código de OP").AllowEditing(false).Width(103);
+
+        columns.AddFor(m => m.Cod_producto).Caption("Código producto").Width(130).AllowEditing(false);
+
+        columns.AddFor(m => m.Des_producto).Caption("Nombre producto").AllowEditing(false).MinWidth(100);
+        
+        columns.AddFor(m => m.value).Caption("Unidades producidas").AllowEditing(false).Width(130);
+        
+        columns.AddFor(m => m.fini).Caption("Tiempo inicio").AllowEditing(false).Format("dd-MM-yyyy HH:mm").Width(130);
+
+        columns.AddFor(m => m.ffin).Caption("Tiempo fin").AllowEditing(false).Format("dd-MM-yyyy HH:mm").Width(130);
+
+        columns.AddFor(m => m.HorasT).Caption("Horas transcurridas").AllowEditing(false).Width(140);
+                
+    })
+    .AllowColumnResizing(true)
+    .AllowColumnReordering(true)
+    .FilterRow(filterRow => filterRow.Visible(true))
+    .GroupPanel(groupPanel => groupPanel.Visible(true))
+    //.OnSelectionChanged("selection_changed")
+
+    )
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>    
+</figure>
+
+<script src="~/js/ResumenOP.js" asp-append-version="true"></script>
+

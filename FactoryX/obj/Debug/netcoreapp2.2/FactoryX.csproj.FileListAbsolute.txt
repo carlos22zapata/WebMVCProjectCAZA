@@ -1,0 +1,478 @@
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csprojAssemblyReference.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\Users\Desarrollo\Desktop\FPB_Visual\28012019\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\web.config
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Calidad.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Disponibilidad.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_indicadores.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_tiempos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\OEE.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Rendimiento.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\ResumenOP.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Configuracion\Configuracion.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\HistoricoVariables\HistoricoVariables.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\InventarioTR.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\VistaPrincipal.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\MejoraContinua\MejoraContinua.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Monitoreo\Monitoreo.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Planificacion\Planificacion.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutIdentity.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Activos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\CapacidadesActivos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DiasInactivos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Incidencias.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Productos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Turnos.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.genruntimeconfig.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csprojAssemblyReference.cache
+C:\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CoreCompileInputs.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\web.config
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CoreCompileInputs.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Calidad.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Disponibilidad.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_indicadores.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_tiempos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\OEE.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Rendimiento.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\ResumenOP.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Configuracion\Configuracion.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\HistoricoVariables\HistoricoVariables.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\InventarioTR.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\VistaPrincipal.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\MejoraContinua\MejoraContinua.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Monitoreo\Monitoreo.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Planificacion\Planificacion.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutIdentity.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Activos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\CapacidadesActivos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DetallesProductos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DiasInactivos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Incidencias.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Productos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Turnos.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.genruntimeconfig.cache
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete
+C:\Users\fpbAdmin\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csprojAssemblyReference.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\web.config
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\libman.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CoreCompileInputs.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Calidad.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Disponibilidad.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_indicadores.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_tiempos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\OEE.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Rendimiento.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\ResumenOP.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Configuracion\Configuracion.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\HistoricoVariables\HistoricoVariables.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\CCostos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\InventarioTR.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Lean.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\ModuloNoDisponible.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\VistaPrincipal.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\MejoraContinua\MejoraContinua.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Monitoreo\Monitoreo.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Planificacion\Planificacion.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutIdentity.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Activos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\CapacidadesActivos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DetallesProductos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DiasInactivos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Incidencias.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Productos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Turnos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\TurnosDinamicos.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.genruntimeconfig.cache
+C:\Users\Cognitiva 1\source\repos\FactoryX\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\web.config
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\libman.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\Users\Cognitiva 1\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CoreCompileInputs.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Calidad.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Disponibilidad.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_indicadores.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_tiempos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\OEE.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Rendimiento.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\ResumenOP.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Configuracion\Configuracion.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\HistoricoVariables\HistoricoVariables.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\CCostos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Lean.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\ModuloNoDisponible.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\VistaPrincipal.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Inventario\InventarioTR.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\MejoraContinua\MejoraContinua.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Monitoreo\Monitoreo.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Planificacion\Planificacion.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutIdentity.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Activos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\CapacidadesActivos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DetallesProductos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DiasInactivos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Incidencias.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Productos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\ReporteEtiquetasProductos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Turnos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\TurnosDinamicos.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.genruntimeconfig.cache
+C:\Users\Cognitiva 1\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\NuGet.config
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\web.config
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\libman.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.deps.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.runtimeconfig.dev.json
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.dll
+C:\Users\MyHP\source\repos\factoryx\FactoryX\bin\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.AssemblyReference.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfoInputs.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.AssemblyInfo.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CoreCompileInputs.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorAssemblyInfo.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.input.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.TagHelpers.output.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorCoreGenerate.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Lockout.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Calidad.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Disponibilidad.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_indicadores.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\GestionKPI_tiempos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\OEE.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\Rendimiento.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Analitica\ResumenOP.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Configuracion\Configuracion.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\HistoricoVariables\HistoricoVariables.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\CCostos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Empresas.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Lean.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\ModuloNoDisponible.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Home\VistaPrincipal.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Inventario\InventarioTR.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\MejoraContinua\MejoraContinua.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Monitoreo\Monitoreo.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Planificacion\Planificacion.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DevExtremeLayout.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutIdentity.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Activos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\CapacidadesActivos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DetallesProductos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\DiasInactivos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Incidencias.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Productos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\ReporteEtiquetasProductos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\Turnos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\Tablas\TurnosDinamicos.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.RazorTargetAssemblyInfo.cs
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.Views.pdb
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.dll
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.pdb
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.genruntimeconfig.cache
+C:\Users\MyHP\source\repos\factoryx\FactoryX\obj\Debug\netcoreapp2.2\FactoryX.csproj.CopyComplete

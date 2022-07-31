@@ -1,0 +1,79 @@
+html,body{
+    height:100%;
+}
+#videoBG {
+    display: block;
+    position: fixed;
+    width: auto;
+    height: auto;
+    min-height: 100%;    
+    z-index:-1;  
+}
+
+#videoEmpresas {
+    display: block;
+    position: fixed;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    z-index: -1;
+}
+
+#videoPlanAnual {
+    display: block;
+    position: fixed;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #videoBG {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #videoBG {
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    #videoBG {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/particles.PNG');
+        background-size: cover;
+    }
+}
+
+@media (max-width: 767px) {
+    #videoEmpresas {
+        display: none;
+    }
+
+    body {
+        background: url('../../lib/imagenes/wallpaper/skyscraper.jpg');
+        background-size: cover;
+    }
+}
+
+
+
+.bienvenido{
+    font-weight:bold;
+    font-size:18px;
+    color:#808080;
+    background:white;
+    padding-left:20px;
+}
+
+td{
+    color:black;
+}

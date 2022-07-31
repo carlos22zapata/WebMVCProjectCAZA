@@ -1,0 +1,186 @@
+﻿@model FactoryX.Models.PedidosModel
+
+@{
+    ViewData["Title"] = "Histórico de variables";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input id="idEmpresa" value="@ViewBag.idEmpresa" style="display:none;" />
+
+<script src="~/js/Planificacion.js" asp-append-version="true"></script>
+
+<hr style="color: #0056b2;" />
+
+<h1>Histórico de variables</h1>
+<hello-world></hello-world>
+
+<button class="btn btn-primary agregar" onclick="mostrarFiltroDia()" id="btnDia">
+    @*<i class="fas fa-cubes" > </i>*@
+    Día
+</button>
+<button class="btn btn-primary agregar" onclick="mostrarFiltroHora()" id="btnHora">
+    @*<i class="fas fa-cubes" > </i>*@
+    Hora
+</button>
+@*<br />
+<br />*@
+
+@* Filtro del día *@
+<div class="container-fluid" id="diaFilter" style="cursor:pointer; display:none;">
+    <br />
+    <div class="container">
+        <div class="row">
+            <span class="input-group-text">Desde</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("diaDesde")
+                    .DisplayFormat("dd/MM/yyyy")
+                    .Type(DateBoxType.Date)
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            <span class="input-group-text">Hasta</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("diaHasta")
+                    .DisplayFormat("dd/MM/yyyy")
+                    .Type(DateBoxType.Date)
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+        </div>
+
+        @*<br />*@
+
+        @*<div class="row">
+                <button class="col-xl-1 btn btn-info agregar" onclick="LineChart('ts')">
+                    Aplicar
+                </button>
+            </div>*@
+
+    </div>
+</div>
+
+@* Filtro de horas *@
+<div class="container-fluid" id="horaFilter" style="cursor:pointer; display:none;">
+    <br />
+    <div class="container">
+        <div class="row">
+            @*<div class="col-xl-1">Desde</div>*@
+            <span class="input-group-text">Desde</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("horaDesde")
+                    .DisplayFormat("dd/MM/yyyy HH:mm")
+                    .Type(DateBoxType.DateTime)
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+            @*<div class="col-xl-1">Hasta</div>*@
+            <span class="input-group-text">Hasta</span>
+            <div class="col-xl-3">
+                @(Html.DevExtreme().DateBox()
+                    .ID("horaHasta")
+                    .DisplayFormat("dd/MM/yyyy HH:mm")
+                    .Type(DateBoxType.DateTime)
+                    .Value(DateTime.Now)
+                    .DropDownButtonTemplate(@<i class="fas fa-calendar-alt"></i>)
+                )
+            </div>
+
+
+        </div>
+
+        @*<br />*@
+
+        @*<div class="row">
+                <button class="col-xl-1 btn btn-info agregar" onclick="LineChart('th')" id="prueba">
+                    Aplicar
+                </button>
+            </div>*@
+
+    </div>
+</div>
+
+<div class="row">
+
+    &nbsp;&nbsp;
+    <div class="alert alert-info col-md-12" id="info_ini">
+        Seleccione un rango de tiempo, seleccione un activo y presione el botón Aplicar.
+    </div>
+
+</div>
+
+@*<br />*@
+
+@*<script src="https://code.highcharts.com/stock/highstock.js"></script>*@
+
+<script src="~/js/HighCharts/highstock.js" asp-append-version="true"></script>
+<script src="https://code.highcharts.com/modules/boost.js"></script>
+
+
+<div class="scroller" id="tb_activos">
+
+    @(Html.DevExtreme().DataGrid<FactoryX.Models.Activos_Vista>().ID("dg_Activos")
+        .DataSource(ds => ds.Mvc()
+            .LoadParams(new { idEmpresa = ViewBag.idEmpresa })
+            .Controller("HistoricoVariables")
+            .LoadAction("GetDatosTabla1")
+            .Key("Id")
+        )
+        .ShowBorders(true)
+        .Selection(s => s.Mode(SelectionMode.Multiple))
+        .Columns(columns =>
+        {
+            columns.Add().Caption("Seleccionar")
+                .Type(GridCommandColumnType.Selection)
+                .Width(50);
+
+            columns.AddFor(m => m.Cod_activo).Width(150);
+
+            columns.AddFor(m => m.Des_activo).MinWidth(200);
+
+            columns.AddFor(m => m.Variable).Caption("Variable").AllowEditing(false).Width(70);
+
+            columns.AddFor(m => m.Unidad).Caption("Unidad").AllowEditing(false).Width(70);
+
+        })
+        .AllowColumnResizing(true)
+        .AllowColumnReordering(true)
+        .FilterRow(filterRow => filterRow.Visible(true))
+        .GroupPanel(groupPanel => groupPanel.Visible(true))
+        .OnSelectionChanged("selection_changed")
+    )
+</div>
+
+<br />
+
+<div class="col-md-2">
+    <button class="btn btn-info agregar" onclick="LineChart()">
+        Aplicar
+    </button>
+</div>
+
+<div class="">
+    <div class="container-scroll" id="dv_tablas"></div>
+</div>
+
+<script src="~/js/HistoricoVariables.js" asp-append-version="true"></script>
+
+
+
+<script type="text/javascript">
+
+    var Factory = Factory || {};
+    Factory.Urls = Factory.Urls || {};
+    Factory.Urls.baseUrl        = '@Url.Content("~")';
+    Factory.Urls.AsignaEmpresa  = '@Html.Raw(Url.Action("AsignaEmpresa","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.AsignaCod_plan = '@Html.Raw(Url.Action("AsignaCod_plan","Planificacion"))';
+    Factory.Urls.ValoresGrafico = '@Html.Raw(Url.Action("ValoresGrafico","HistoricoVariables", new { @idEmpresa = ViewBag.idEmpresa}))';
+    Factory.Urls.EliminaPlan = '@Html.Raw(Url.Action("EliminaPlan","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))'; //Factory.Urls.PlanCerrado
+    Factory.Urls.PlanCerrado     = '@Html.Raw(Url.Action("PlanCerrado","Planificacion", new { @idEmpresa = ViewBag.idEmpresa}))';
+
+</script>

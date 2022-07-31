@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\MyHP\source\repos\factoryx\Publish</_PublishTargetUrl>
+    <History>True|2022-03-10T10:38:47.8009363Z;True|2022-03-09T14:15:31.4255254-03:00;True|2022-02-23T19:50:41.2098234-03:00;True|2022-02-23T19:06:14.5022051-03:00;True|2022-02-07T19:34:29.5794220-03:00;True|2022-01-10T18:19:03.4976322-03:00;True|2022-01-10T16:10:58.6156969-03:00;True|2022-01-10T16:09:50.9247713-03:00;True|2022-01-07T21:34:04.2899016-03:00;True|2022-01-07T20:57:56.7292248-03:00;True|2022-01-07T20:56:20.7911695-03:00;True|2021-12-23T22:05:45.5830226-03:00;True|2021-12-23T11:37:13.9906505-03:00;True|2021-12-20T20:08:17.2016884-03:00;True|2021-12-19T11:11:28.8941213-03:00;True|2021-12-19T11:10:49.6342311-03:00;True|2021-12-19T10:35:21.9374079-03:00;True|2021-12-19T10:34:06.7468855-03:00;True|2021-12-16T09:43:04.3791676-03:00;True|2021-12-01T14:29:52.6760936-03:00;True|2021-11-24T10:13:10.2659357-03:00;True|2021-11-23T08:30:43.8293105-03:00;False|2021-11-23T08:29:38.0813621-03:00;False|2021-11-23T08:29:23.2901331-03:00;True|2021-11-22T15:21:46.8757659-03:00;True|2021-11-22T12:04:51.7105570-03:00;True|2021-11-16T19:17:17.0218115-03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Controllers/AnaliticaController.cs">
+      <publishTime>07/26/2020 19:24:38</publishTime>
+    </File>
+    <File Include="Controllers/ConfiguracionController.cs">
+      <publishTime>02/18/2020 11:49:19</publishTime>
+    </File>
+    <File Include="Controllers/HomeController.cs">
+      <publishTime>02/18/2020 11:50:00</publishTime>
+    </File>
+    <File Include="Controllers/MejoraContinuaController.cs">
+      <publishTime>02/18/2020 11:45:56</publishTime>
+    </File>
+    <File Include="Controllers/MonitoreoController.cs">
+      <publishTime>07/29/2020 22:44:46</publishTime>
+    </File>
+    <File Include="Controllers/PlanificacionController.cs">
+      <publishTime>07/30/2020 15:23:24</publishTime>
+    </File>
+    <File Include="Controllers/TablasController.cs">
+      <publishTime>06/24/2020 23:33:59</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
